@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import logging
+import sys
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -8,6 +10,12 @@ from fastapi.staticfiles import StaticFiles
 
 from backend.app.api.chat import router as chat_router
 from backend.app.knowledge.policy_facts import certificate_summary
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+    stream=sys.stdout,
+)
 
 ROOT_DIR = Path(__file__).resolve().parents[2]
 FRONTEND_DIR = ROOT_DIR / "frontend"

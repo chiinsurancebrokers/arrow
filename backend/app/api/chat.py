@@ -1,11 +1,15 @@
 from __future__ import annotations
 
+import logging
+import os
+
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 
 from backend.app.services.adviser import ask_hal
 
 router = APIRouter()
+logger = logging.getLogger("hal.chat")
 
 
 class ChatTurn(BaseModel):
@@ -30,7 +34,11 @@ async def chat(payload: ChatRequest) -> ChatResponse:
             payload.message,
             history=[turn.model_dump() for turn in payload.history],
         )
-    except Exception as exc:  # noqa: BLE001 - surface a safe message, log the real one
-        raise HTTPException(status_code=502, detail="HAL is temporarily unavailable.") from exc
+    except Exception as exc:  # noqa: BLE001 - always logged; detail only echoed if HAL_DEBUG=1
+        logger.exception("HAL /api/chat failed for message: %r", payload.message)
+        detail = "HAL is temporarily unavailable."
+        if os.environ.get("HAL_DEBUG") == "1":
+            detail = f"HAL is temporarily unavailable. Debug: {type(exc).__name__}: {exc}"
+        raise HTTPException(status_code=502, detail=detail) from exc
 
     return ChatResponse(answer=reply.answer, citations=reply.citations)

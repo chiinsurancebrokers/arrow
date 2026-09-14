@@ -2489,12 +2489,20 @@ function downloadTextFile(text, filename, mime) {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ message: text, history: halHistory.slice(-10) })
                 });
-                if (!res.ok) throw new Error('HAL request failed (' + res.status + ')');
+                if (!res.ok) {
+                    let detail = '';
+                    try { detail = (await res.json()).detail || ''; } catch (_) { /* body wasn't JSON */ }
+                    throw new Error('HAL request failed (' + res.status + ')' + (detail ? ': ' + detail : ''));
+                }
                 const data = await res.json();
                 appendHalMessage('bot', data.answer, data.citations);
                 halHistory.push({ role: 'assistant', content: data.answer });
             } catch (err) {
-                appendHalMessage('bot', "I couldn't reach the policy assistant just now. For anything urgent, please use the Emergency Contacts section instead.");
+                const fallback = "I couldn't reach the policy assistant just now. For anything urgent, please use the Emergency Contacts section instead.";
+                // If the server sent a HAL_DEBUG detail, show it too -- makes deploy issues
+                // visible in the widget itself instead of only in Railway's logs.
+                const shown = (err && err.message && err.message.includes(': ')) ? fallback + '\n\n[' + err.message + ']' : fallback;
+                appendHalMessage('bot', shown);
                 console.error(err);
             } finally {
                 btn.disabled = false;
