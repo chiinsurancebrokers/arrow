@@ -1,0 +1,2409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Arrow Travel Insurance Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 50%, #f3e8ff 100%);
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Navigation Menu */
+        .nav-container {
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem;
+        }
+
+        .nav-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .nav-logo svg {
+            width: 1.5rem;
+            height: 1.5rem;
+            color: #4f46e5;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-button {
+            background: #4f46e5;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: background 0.2s;
+        }
+
+        .dropdown-button:hover {
+            background: #4338ca;
+        }
+
+        .dropdown-button svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            right: 0;
+            top: calc(100% + 0.5rem);
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            min-width: 280px;
+            display: none;
+            overflow: hidden;
+        }
+
+        .dropdown-menu.show {
+            display: block;
+        }
+
+        .dropdown-item {
+            padding: 1rem 1.25rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            border-bottom: 1px solid #f3f4f6;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:hover {
+            background: #f9fafb;
+        }
+
+        .dropdown-item.active {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-weight: 600;
+        }
+
+        .dropdown-icon {
+            font-size: 1.25rem;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 1rem;
+            padding-bottom: 3rem;
+        }
+
+        /* Content Sections */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .header {
+            text-align: center;
+            margin: 1rem 0 2rem 0;
+            padding: 1.5rem 1rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #eef2ff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #4f46e5, #10b981, #f59e0b);
+        }
+
+        .policy-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding: 0.4rem 0.85rem;
+            background: #eef2ff;
+            border: 1px solid #c7d2fe;
+            color: #3730a3;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .header-title h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .plane-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #4f46e5;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            flex-shrink: 0;
+        }
+
+        .plane-icon-flipped {
+            transform: scaleX(-1);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .subtitle {
+            color: #4b5563;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .tagline {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.25rem;
+            border-top: 4px solid;
+        }
+
+        .stat-card-indigo { border-top-color: #4f46e5; }
+        .stat-card-green { border-top-color: #10b981; }
+        .stat-card-purple { border-top-color: #a855f7; }
+        .stat-card-orange { border-top-color: #f97316; }
+
+        .stat-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.875rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .stat-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            opacity: 0.5;
+            flex-shrink: 0;
+        }
+
+        .stat-icon-indigo { color: #4f46e5; }
+        .stat-icon-green { color: #10b981; }
+        .stat-icon-purple { color: #a855f7; }
+        .stat-icon-orange { color: #f97316; }
+
+        .employee-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        
+
+.year-separator {
+    margin: 1.75rem 0 1rem;
+    padding: 0.85rem 1rem;
+    background: rgba(79, 70, 229, 0.10);
+    border: 1px solid #c7d2fe;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+
+.year-separator-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #3730a3;
+    letter-spacing: 0.12em;
+}
+
+.year-separator-subtitle {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #4b5563;
+}
+.employee-header {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .employee-info h3 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .employee-email {
+            color: #6b7280;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            word-break: break-all;
+        }
+
+        .employee-days {
+            text-align: left;
+        }
+
+        .employee-days-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+
+        .employee-days-label {
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        .progress-section {
+            margin-bottom: 1rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.25rem;
+        }
+
+        .progress-label {
+            color: #4b5563;
+        }
+
+        .progress-remaining {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            background: #e5e7eb;
+            border-radius: 9999px;
+            height: 0.75rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 9999px;
+            transition: width 0.5s;
+        }
+
+        .progress-green { background: #10b981; }
+        .progress-blue { background: #3b82f6; }
+        .progress-yellow { background: #eab308; }
+        .progress-red { background: #ef4444; }
+
+        .trips-section h4 {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .trip-card {
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid;
+        }
+
+        .trip-card-pending {
+            background: #eef2ff;
+            border-color: #c7d2fe;
+        }
+
+
+        .trip-card-active {
+            background: #ecfeff;
+            border-color: #a5f3fc;
+        }
+
+        .trip-card-completed {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+
+        .trip-card-canceled {
+            background: #fef2f2;
+            border-color: #fecaca;
+        }
+
+        .trip-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .trip-details {
+            flex: 1;
+        }
+
+        .trip-route {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .trip-route-text {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 0.9rem;
+        }
+
+        .trip-route-text-canceled {
+            color: #6b7280;
+            text-decoration: line-through;
+        }
+
+        .completed-badge {
+            background: #16a34a;
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .canceled-badge {
+            background: #dc2626;
+            color: white;
+            padding: 0.125rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+
+        /* Status badges (Active / Pending / Expired) */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+        }
+
+        .status-active { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+        .status-pending { background: #fef9c3; color: #854d0e; border: 1px solid #fde68a; }
+        .status-expired { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+        /* Insurance intelligence flags */
+        .flag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 9999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            background: #fff7ed;
+            color: #9a3412;
+            border: 1px solid #fed7aa;
+        }
+
+        .flag-icon {
+            font-size: 0.85rem;
+            line-height: 1;
+        }
+
+        /* Year separator inside employee trip list */
+        .trip-year {
+            margin: 0.75rem 0 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .trip-year:after {
+            content: "";
+            height: 1px;
+            background: #e5e7eb;
+            flex: 1;
+        }
+        .trip-year-pill {
+            padding: 0.15rem 0.65rem;
+            background: #f3f4f6;
+            border: 1px solid #e5e7eb;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #374151;
+        }
+        .trip-dates {
+            font-size: 0.9rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.25rem;
+        }
+
+        .trip-dates-canceled {
+            color: #6b7280;
+        }
+
+        .trip-days {
+            align-self: flex-start;
+        }
+
+        .trip-days-badge {
+            color: white;
+            padding: 0.375rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .trip-days-pending {
+            background: #4f46e5;
+        }
+
+        .trip-days-active {
+            background: #0ea5e9;
+        }
+
+        .trip-days-completed {
+            background: #16a34a;
+        }
+
+        .trip-days-canceled {
+            background: #f87171;
+        }
+
+        /* Benefits Guide Styles */
+        .benefits-header {
+            background: linear-gradient(135deg, #2c5282 0%, #2d3748 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .benefits-header h1 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefits-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-left: 5px solid #4f46e5;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .benefit-amount {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4f46e5;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefit-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .benefit-list li:last-child {
+            border-bottom: none;
+        }
+
+        .emergency-card {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+        }
+
+        .emergency-card h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Info Sections */
+        .info-card {
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #374151;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card p {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card ul li {
+            color: #4b5563;
+            line-height: 1.8;
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .contact-box {
+            background: #f0f9ff;
+            border: 2px solid #0284c7;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-box strong {
+            color: #0c4a6e;
+        }
+
+        .footer {
+            margin-top: 2rem;
+            background: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            padding: 1.25rem;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-section {
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .footer-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-subtitle {
+            font-size: 0.85rem;
+            color: #4b5563;
+        }
+
+        .footer-copyright {
+            font-size: 0.7rem;
+            color: #6b7280;
+            margin-top: 0.5rem;
+        }
+
+        .footer-license {
+            font-size: 0.7rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .footer-license strong {
+            font-weight: 600;
+        }
+
+        .footer-access-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-contacts {
+            font-size: 0.7rem;
+            color: #4b5563;
+            line-height: 1.6;
+            word-break: break-all;
+        }
+
+        .footer-tagline {
+            font-size: 0.85rem;
+            color: #4f46e5;
+            font-weight: 500;
+            margin-top: 0.75rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 2rem;
+            }
+
+            .header-title h1 {
+                font-size: 3rem;
+            }
+
+            .plane-icon {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .employee-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+
+            .employee-days {
+                text-align: right;
+                margin-left: 1rem;
+            }
+
+            .trip-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .trip-days {
+                margin-left: 1rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    
+        .hr-summary {
+            margin-top: 6px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .export-all-wrap {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .export-all-btn {
+            padding: 10px 14px;
+            border: 1px solid #d0d7de;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .export-all-btn:hover {
+            background: #f6f8fa;
+        }
+        .trip-year {
+            margin: 14px 0 8px;
+            text-align: center;
+            position: relative;
+        }
+        .trip-year::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #d0d7de;
+            z-index: 0;
+        }
+        .trip-year-pill {
+            background: #f8f9fb;
+            padding: 4px 14px;
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.6px;
+            color: #2c3e50;
+            position: relative;
+            z-index: 1;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+
+/* Pulse / FCDO alerts */
+.pulse-banner, .fcdo-banner {
+    border-radius: 0.85rem;
+    padding: 1rem 1.1rem;
+    margin: 0 0 1rem 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+.pulse-banner {
+    background: #b91c1c;
+    color: white;
+    border: 1px solid #991b1b;
+}
+.pulse-banner.hidden, .fcdo-banner.hidden, .pulse-modal.hidden { display: none; }
+.pulse-banner-title, .fcdo-banner-title {
+    font-weight: 800;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.pulse-banner-body, .fcdo-banner-body {
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+.pulse-banner-actions, .fcdo-banner-actions {
+    margin-top: 0.8rem;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+}
+.pulse-btn, .fcdo-pill {
+    border: 1px solid rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.12);
+    color: white;
+    padding: 0.55rem 0.9rem;
+    border-radius: 9999px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+}
+.pulse-btn.secondary {
+    background: transparent;
+}
+.fcdo-banner {
+    background: #dc2626;
+    color: white;
+    border: 1px solid #b91c1c;
+}
+.fcdo-pill {
+    background: rgba(255,255,255,0.16);
+}
+.pulse-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(17,24,39,0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    padding: 1rem;
+}
+.pulse-modal-card {
+    width: 100%;
+    max-width: 860px;
+    max-height: 85vh;
+    overflow: auto;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    padding: 1.25rem;
+}
+.pulse-modal-card h3 {
+    margin-bottom: 0.4rem;
+    color: #111827;
+}
+.pulse-modal-card p, .pulse-modal-card li {
+    color: #374151;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+.pulse-modal-card ul {
+    margin: 0.6rem 0 0.8rem 1.2rem;
+}
+.pulse-modal-close {
+    margin-top: 1rem;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 0.6rem;
+    background: #4f46e5;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+
+        /* HAL chat widget */
+        #halFab {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 1.5rem;
+            z-index: 1200;
+            background: #4f46e5;
+            color: #fff;
+            border: none;
+            border-radius: 999px;
+            padding: 0.9rem 1.3rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 10px 25px rgba(79,70,229,0.35);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        #halFab:hover { background: #4338ca; }
+        #halPanel {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 5.5rem;
+            width: min(380px, calc(100vw - 2rem));
+            height: min(520px, calc(100vh - 8rem));
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1200;
+        }
+        #halPanel.show { display: flex; }
+        .hal-header {
+            background: #4f46e5;
+            color: #fff;
+            padding: 0.9rem 1rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .hal-header small { display: block; font-weight: 400; opacity: 0.85; font-size: 0.72rem; }
+        .hal-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+        .hal-messages { flex: 1; overflow-y: auto; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; background: #f9fafb; }
+        .hal-msg { max-width: 85%; padding: 0.6rem 0.8rem; border-radius: 0.7rem; font-size: 0.88rem; line-height: 1.4; white-space: pre-wrap; }
+        .hal-msg.user { align-self: flex-end; background: #4f46e5; color: #fff; border-bottom-right-radius: 0.2rem; }
+        .hal-msg.bot { align-self: flex-start; background: #fff; border: 1px solid #e5e7eb; border-bottom-left-radius: 0.2rem; }
+        .hal-msg.bot .hal-cite { display: block; margin-top: 0.35rem; font-size: 0.72rem; color: #6b7280; }
+        .hal-input-row { display: flex; gap: 0.5rem; padding: 0.75rem; border-top: 1px solid #e5e7eb; background: #fff; }
+        .hal-input-row input { flex: 1; border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 0.55rem 0.7rem; font-size: 0.88rem; }
+        .hal-input-row button { background: #4f46e5; color: #fff; border: none; border-radius: 0.5rem; padding: 0 1rem; font-weight: 600; cursor: pointer; }
+        .hal-input-row button:disabled { opacity: 0.6; cursor: not-allowed; }
+        .hal-disclaimer { font-size: 0.7rem; color: #9ca3af; padding: 0 0.9rem 0.6rem; }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav class="nav-container">
+        <div class="nav-content">
+            <div class="nav-logo">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                <span>Arrow Travel</span>
+            </div>
+            <div class="dropdown">
+                <button class="dropdown-button" onclick="toggleDropdown()">
+                    <span id="currentSection">Travel Tracker</span>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <div class="dropdown-item active" onclick="showSection('tracker')">
+                        <span class="dropdown-icon">📊</span>
+                        <span>Travel Tracker</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('benefits')">
+                        <span class="dropdown-icon">💼</span>
+                        <span>Benefits Guide (English)</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('benefits-gr')">
+                        <span class="dropdown-icon">🇬🇷</span>
+                        <span>Οδηγός Παροχών (Ελληνικά)</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('policy')">
+                        <span class="dropdown-icon">📋</span>
+                        <span>Policy Information</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('emergency')">
+                        <span class="dropdown-icon">🚨</span>
+                        <span>Emergency Contacts</span>
+                    </div>
+                    <div class="dropdown-item" onclick="showSection('about')">
+                        <span class="dropdown-icon">ℹ️</span>
+                        <span>About</span>
+                    </div>
+                    <div class="dropdown-item" onclick="openHalChat(); toggleDropdown();">
+                        <span class="dropdown-icon">🤖</span>
+                        <span>Ask HAL about your cover</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Travel Tracker Section -->
+        <div id="tracker" class="section active">
+            <div class="header">
+                <div class="header-title">
+                    <svg class="plane-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                    <h1>Arrow Travel Tracker</h1>
+                    <svg class="plane-icon plane-icon-flipped" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </div>
+                <p class="subtitle">Coverage Period: 01/09/2026 – 31/08/2027 | Annual Limit: 250 shared days*</p>
+                <div class="policy-pill">📄 Cert CGT P804302600 • Binder B1735ND0054525</div>
+                <p class="tagline">🎯 Keeping tabs on your globetrotting adventures!</p>
+            </div>
+
+
+            <div id="pulseBanner" class="pulse-banner hidden">
+                <div class="pulse-banner-title">⚠️ War, Unrest & Kidnap Exclusion — read before you travel</div>
+                <div class="pulse-banner-body">
+                    Certificate CGT P804302600 excludes travel to areas of War, Unrest or Disruption, and excludes Kidnap in a named list of countries, unless declared and agreed by Underwriters before travelling. This is standing policy wording, not a one-off notice.
+                </div>
+                <div class="pulse-banner-actions">
+                    <button type="button" class="pulse-btn" onclick="openPulseModal()">Read details</button>
+                    <button type="button" class="pulse-btn secondary" onclick="dismissPulseBanner()">Dismiss</button>
+                </div>
+            </div>
+
+            <div id="fcdoBanner" class="fcdo-banner hidden">
+                <div class="fcdo-banner-title">🚨 High Alert (Middle East) <span style="font-size:0.82rem;font-weight:700;opacity:0.95;">FCDO travel advice</span></div>
+                <div class="fcdo-banner-body">
+                    Before travelling, please check the UK Foreign, Commonwealth &amp; Development Office (FCDO) travel advice for your destination. As per your policy wording, <strong>Area of War, Unrest or Disruption</strong> is defined for business travel as any country/region where the FCDO advises against <strong>“ALL” travel</strong>.
+                </div>
+                <div class="fcdo-banner-actions" id="fcdoLinks">
+                    <a class="fcdo-pill" href="https://www.gov.uk/foreign-travel-advice" target="_blank" rel="noopener noreferrer">Open FCDO travel advice</a>
+                </div>
+            </div>
+
+            <div id="pulseModal" class="pulse-modal hidden" role="dialog" aria-modal="true" aria-labelledby="pulseModalTitle">
+                <div class="pulse-modal-card">
+                    <h3 id="pulseModalTitle">War, Unrest & Kidnap Exclusion — Certificate CGT P804302600</h3>
+                    <p><strong>Endorsements, Certificate CGT P804302600</strong></p>
+                    <p>Cover under this Certificate <strong>excludes all travel to areas of War, Unrest or Disruption</strong> unless declared and agreed by Underwriters prior to travelling to such areas.</p>
+                    <p><strong>Area of War, Unrest or Disruption is defined as:</strong></p>
+                    <ul>
+                        <li><strong>Business travel:</strong> a country/region the FCDO advises against "ALL" travel, plus Belarus, Russia, Ukraine, Gaza, Israel &amp; Lebanon by name.</li>
+                        <li><strong>Holiday travel</strong> (only relevant if the Holiday Inclusion Clause applies to a person — currently <em>Not Included</em> on this certificate): a country/region the FCDO advises against "ALL" or "All but Essential" travel, plus the same six named countries.</li>
+                    </ul>
+                    <p><strong>Kidnap exclusion.</strong> Cover excludes any Kidnap occurring in Afghanistan, Belarus, Colombia, Gaza, Israel, Iraq, Lebanon, Mexico, Nigeria, Pakistan, Philippines, Russia, Somalia, Ukraine, Venezuela, Yemen — or any other country/region where the UK FCDO has advised against "all travel" or "all travel due to the threat of kidnap" prior to the trip starting.</p>
+                    <p><strong>Any One Accident/Incident aggregate cap.</strong> Underwriters' total liability for all Insured Persons suffering Bodily Injury in the same Accident, or series of Accidents from one cause, is capped at <strong>€10,000,000</strong>. If one incident exceeds this, each Insured Person's benefit is reduced proportionately.</p>
+                    <p style="color:#6b7280;font-size:0.85rem;">Always check current <a href="https://www.gov.uk/foreign-travel-advice" target="_blank" rel="noopener noreferrer">FCDO travel advice</a> for the specific destination before booking or travelling — this is the trigger for the exclusion, and it can change at short notice.</p>
+                    <button type="button" class="pulse-modal-close" onclick="closePulseModal()">Close</button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card stat-card-indigo">
+                    <div class="stat-content">
+                        <div>
+                            <p class="stat-label">Total Employees</p>
+                            <p class="stat-value" id="totalEmployees">24</p>
+                        </div>
+                        <svg class="stat-icon stat-icon-indigo" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="6" stroke-width="2" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-green">
+                    <div class="stat-content">
+                        <div>
+                            <p class="stat-label">Total Days Traveled</p>
+                            <p class="stat-value" id="totalDays">217</p>
+                        </div>
+                        <svg class="stat-icon stat-icon-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-orange">
+                    <div class="stat-content">
+                        <div>
+                            <p class="stat-label">Days Remaining</p>
+                            <p class="stat-value" id="daysRemaining">33</p>
+                        </div>
+                        <svg class="stat-icon stat-icon-orange" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="stat-card stat-card-purple">
+                    <div class="stat-content">
+                        <div>
+                            <p class="stat-label">Avg Days/Employee</p>
+                            <p class="stat-value" id="avgDays">7.8</p>
+                        </div>
+                        <svg class="stat-icon stat-icon-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke-width="2" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 2v4M8 2v4M3 10h18" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="export-all-wrap">
+                <button class="export-all-btn" onclick="exportAllCSV()">⬇️ Export ALL Trips (CSV)</button>
+            </div>
+
+            <div id="employeesList"></div>
+        </div>
+
+        <!-- Benefits Guide Section -->
+        <div id="benefits" class="section">
+            <div class="benefits-header">
+                <h1>💼 Travel Insurance Benefits</h1>
+                <p>Certificate No. CGT P804302600 | Binder Ref B1735ND0054525</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-title">🏥 Medical & Emergency</div>
+                    <div class="benefit-amount">€10,000,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Comprehensive medical coverage worldwide</p>
+                    <ul class="benefit-list">
+                        <li><strong>Medical Expenses:</strong> €10M coverage</li>
+                        <li><strong>Emergency Repatriation:</strong> Included</li>
+                        <li><strong>Hospital Daily Benefit:</strong> €50/day (max 52 weeks)</li>
+                        <li><strong>Search & Rescue:</strong> Up to €25,000</li>
+                        <li><strong>Funeral Expenses:</strong> Up to €10,000</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">✈️ Trip Protection</div>
+                    <div class="benefit-amount">€15,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Per person (€250,000 per incident)</p>
+                    <ul class="benefit-list">
+                        <li><strong>Cancellation:</strong> Covered</li>
+                        <li><strong>Curtailment:</strong> Pro-rated refund</li>
+                        <li><strong>Travel Delay:</strong> €50/4hrs (max €500)</li>
+                        <li><strong>Missed Connection:</strong> Covered</li>
+                        <li><strong>Rearrangement:</strong> Included</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🧳 Baggage & Equipment</div>
+                    <div class="benefit-amount">€15,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Single item limit €3,000</p>
+                    <ul class="benefit-list">
+                        <li><strong>Personal Baggage:</strong> €15,000</li>
+                        <li><strong>Business Equipment:</strong> Up to €3,000</li>
+                        <li><strong>Delayed Baggage:</strong> €1,000 (after 4hrs)</li>
+                        <li><strong>Single Item:</strong> Max €3,000</li>
+                        <li><strong>Automatic Reinstatement:</strong> Yes</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">💰 Money & Documents</div>
+                    <div class="benefit-amount">€10,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Cash limit €3,000</p>
+                    <ul class="benefit-list">
+                        <li><strong>Cash Loss:</strong> Up to €3,000</li>
+                        <li><strong>Rental Vehicle Excess:</strong> Up to €1,000/event (€25,000 aggregate)</li>
+                        <li><strong>Credit Cards:</strong> Covered</li>
+                        <li><strong>Travel Documents:</strong> Included</li>
+                        <li><strong>Passport Replacement:</strong> 25% of sum insured</li>
+                        <li><strong>Business Documents:</strong> 25% of sum insured</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">👤 Personal Accident</div>
+                    <div class="benefit-amount">€50,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Capital benefit coverage</p>
+                    <ul class="benefit-list">
+                        <li><strong>Accidental Death:</strong> €50,000</li>
+                        <li><strong>Permanent Disablement:</strong> €50,000</li>
+                        <li><strong>Paraplegia:</strong> €50,000</li>
+                        <li><strong>Quadriplegia:</strong> €125,000</li>
+                        <li><strong>Partial Disablement:</strong> Scale-based</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">⚖️ Legal & Liability</div>
+                    <div class="benefit-amount">€5,000,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Personal liability coverage</p>
+                    <ul class="benefit-list">
+                        <li><strong>Legal Expenses:</strong> €50,000</li>
+                        <li><strong>Personal Liability:</strong> €5M</li>
+                        <li><strong>Legal Representation:</strong> Provided</li>
+                        <li><strong>Court Costs:</strong> Covered</li>
+                        <li><strong>Settlement Support:</strong> Included</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🔒 Kidnap & Detention</div>
+                    <div class="benefit-amount">€250,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Consultant costs per period</p>
+                    <ul class="benefit-list">
+                        <li><strong>Daily Benefit:</strong> €500/day (max 50 days)</li>
+                        <li><strong>Consultants:</strong> Up to €100,000 per person</li>
+                        <li><strong>24/7 Support:</strong> Constellis</li>
+                        <li><strong>Travel Expenses:</strong> Additional costs covered</li>
+                        <li><strong>Crisis Management:</strong> Included</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🚁 Evacuation</div>
+                    <div class="benefit-amount">€50,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Emergency evacuation costs</p>
+                    <ul class="benefit-list">
+                        <li><strong>Political Evacuation:</strong> Covered</li>
+                        <li><strong>Natural Disaster:</strong> Included</li>
+                        <li><strong>Civil Unrest:</strong> Covered</li>
+                        <li><strong>Trauma Counseling:</strong> Up to €5,000</li>
+                        <li><strong>Healix Coordination:</strong> 24/7</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="emergency-card">
+                <h2>🚨 Emergency Contacts - Available 24/7</h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <strong>🏥 Medical Emergency</strong>
+                        <div>Healix International</div>
+                        <a href="tel:+442086084227">+44 208 608 4227</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🔒 Kidnap/Security</strong>
+                        <div>Constellis</div>
+                        <a href="tel:+442072403237">+44 20 7240 3237</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📋 Claims</strong>
+                        <div>Crawford TPA</div>
+                        <a href="tel:+3227140360">+32 2 714 03 60</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Broker</strong>
+                        <div>CHI Insurance</div>
+                        <a href="/cdn-cgi/l/email-protection#85ecebe3eac5e6edececebf6f0f7e4ebe6e0e7f7eaeee0f7f6abe6eae8"><span class="__cf_email__" data-cfemail="a1c8cfc7cee1c2c9c8c8cfd2d4d3c0cfc2c4c3d3cecac4d3d28fc2cecc">[email&#160;protected]</span></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h2>⚠️ Important Exclusions</h2>
+                <h3>What's NOT Covered:</h3>
+                <ul>
+                    <li>Pre-existing medical conditions (unless declared)</li>
+                    <li>Travel against medical advice</li>
+                    <li>Manual work (unless pre-approved)</li>
+                    <li>High-risk activities (mountaineering, racing)</li>
+                    <li>War zones and FCO "all travel" warning areas</li>
+                    <li>Alcohol or drug-related incidents</li>
+                    <li>Intentional self-harm or criminal activities</li>
+                </ul>
+                <h3 style="color: #dc2626;">High-Risk Countries (Kidnap Exclusion):</h3>
+                <p>Afghanistan, Belarus, Colombia, Gaza, Israel, Iraq, Lebanon, Mexico, Nigeria, Pakistan, Philippines, Russia, Somalia, Ukraine, Venezuela, Yemen — or any other region the UK FCDO advises against all travel / all travel due to threat of kidnap, prior to the trip starting.</p>
+            </div>
+        </div>
+
+        <!-- Policy Information Section -->
+
+        <!-- Benefits Guide (Greek) Section -->
+        <div id="benefits-gr" class="section" style="display: none;">
+            <div class="benefits-header">
+                <h1>💼 Παροχές Ταξιδιωτικής Ασφάλισης</h1>
+                <p>Αριθμός Πιστοποιητικού: CGT P804302600 | Κωδ. Binder: B1735ND0054525</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-title">🏥 Ιατρικά & Έκτακτης Ανάγκης</div>
+                    <div class="benefit-amount">€10,000,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Ολοκληρωμένη ιατρική κάλυψη παγκοσμίως</p>
+                    <ul class="benefit-list">
+                        <li><strong>Ιατρικές Δαπάνες:</strong> Κάλυψη €10Μ</li>
+                        <li><strong>Επείγων Επαναπατρισμός:</strong> Συμπεριλαμβάνεται</li>
+                        <li><strong>Ημερήσια Νοσοκομειακή Παροχή:</strong> €50/ημέρα (μέγιστο 52 εβδομάδες)</li>
+                        <li><strong>Έρευνα & Διάσωση:</strong> Έως €25,000</li>
+                        <li><strong>Κηδειάστικα Έξοδα:</strong> Έως €10,000</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">✈️ Προστασία Ταξιδιού</div>
+                    <div class="benefit-amount">€15,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Ανά άτομο (€250,000 ανά περιστατικό)</p>
+                    <ul class="benefit-list">
+                        <li><strong>Ακύρωση:</strong> Καλύπτεται</li>
+                        <li><strong>Διακοπή:</strong> Επιστροφή αναλογικά</li>
+                        <li><strong>Καθυστέρηση Ταξιδιού:</strong> €50/4 ώρες (μέγιστο €500)</li>
+                        <li><strong>Χαμένη Σύνδεση:</strong> Καλύπτεται</li>
+                        <li><strong>Αλλαγή Προγράμματος:</strong> Συμπεριλαμβάνεται</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🧳 Αποσκευές & Εξοπλισμός</div>
+                    <div class="benefit-amount">€15,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Όριο μεμονωμένου αντικειμένου €3,000</p>
+                    <ul class="benefit-list">
+                        <li><strong>Προσωπικές Αποσκευές:</strong> €15,000</li>
+                        <li><strong>Επαγγελματικός Εξοπλισμός:</strong> Έως €3,000</li>
+                        <li><strong>Καθυστερημένες Αποσκευές:</strong> €1,000 (μετά από 4 ώρες)</li>
+                        <li><strong>Μεμονωμένο Αντικείμενο:</strong> Μέγιστο €3,000</li>
+                        <li><strong>Αυτόματη Επαναφορά:</strong> Ναι</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">💰 Χρήματα & Έγγραφα</div>
+                    <div class="benefit-amount">€10,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Όριο μετρητών €3,000</p>
+                    <ul class="benefit-list">
+                        <li><strong>Συνολική Κάλυψη:</strong> €3,000</li>
+                        <li><strong>Μετρητά:</strong> Μέγιστο €3,000</li>
+                        <li><strong>Απαλλακτέο Ενοικίου Οχήματος:</strong> Έως €1.000/περιστατικό (συνολικά €25.000)</li>
+                        <li><strong>Ταξιδιωτικές Επιταγές:</strong> Καλύπτονται</li>
+                        <li><strong>Αντικατάσταση Διαβατηρίου:</strong> Συμπεριλαμβάνεται</li>
+                        <li><strong>Έγγραφα:</strong> Πλήρης κάλυψη</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🩹 Ατυχήματα Προσώπων</div>
+                    <div class="benefit-amount">€50,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Παροχή κεφαλαίου</p>
+                    <ul class="benefit-list">
+                        <li><strong>Θάνατος:</strong> €50,000</li>
+                        <li><strong>Μόνιμη Ολική Ανικανότητα:</strong> €50,000</li>
+                        <li><strong>Παραπληγία:</strong> €50,000</li>
+                        <li><strong>Τετραπληγία:</strong> €125,000</li>
+                        <li><strong>Τριπληγία:</strong> €85,000</li>
+                        <li><strong>Ημιπληγία:</strong> €50,000</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">⚖️ Νομικά Έξοδα & Προσωπική Ευθύνη</div>
+                    <div class="benefit-amount">€5,000,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Κάλυψη ευθύνης τρίτων</p>
+                    <ul class="benefit-list">
+                        <li><strong>Νομικά Έξοδα:</strong> €50,000</li>
+                        <li><strong>Προσωπική Ευθύνη:</strong> €5,000,000</li>
+                        <li><strong>Νομική Εκπροσώπηση:</strong> Συμπεριλαμβάνεται</li>
+                        <li><strong>Αξιώσεις Τραυματισμού:</strong> Καλύπτονται</li>
+                        <li><strong>Ζημιά Περιουσίας:</strong> Καλύπτεται</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🔒 Απαγωγή & Κράτηση</div>
+                    <div class="benefit-amount">€250,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Κόστος συμβούλων ανά περίοδο</p>
+                    <ul class="benefit-list">
+                        <li><strong>Ημερήσια Παροχή:</strong> €500/ημέρα (μέγιστο 50 ημέρες)</li>
+                        <li><strong>Σύμβουλοι:</strong> Έως €100,000 ανά άτομο</li>
+                        <li><strong>Υποστήριξη 24/7:</strong> Constellis</li>
+                        <li><strong>Ταξιδιωτικά Έξοδα:</strong> Καλύπτονται επιπλέον</li>
+                        <li><strong>Διαχείριση Κρίσης:</strong> Συμπεριλαμβάνεται</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🚁 Εκκένωση</div>
+                    <div class="benefit-amount">€50,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Έξοδα επείγουσας εκκένωσης</p>
+                    <ul class="benefit-list">
+                        <li><strong>Πολιτική Εκκένωση:</strong> Καλύπτεται</li>
+                        <li><strong>Φυσική Καταστροφή:</strong> Συμπεριλαμβάνεται</li>
+                        <li><strong>Πολιτική Αναταραχή:</strong> Καλύπτεται</li>
+                        <li><strong>Ψυχολογική Υποστήριξη:</strong> Έως €5,000</li>
+                        <li><strong>Επαναπατρισμός:</strong> Πλήρης κάλυψη</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🛡️ Προσωπική Ασφάλεια</div>
+                    <div class="benefit-amount">€10,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Ανά άτομο (€250,000 συνολικά)</p>
+                    <ul class="benefit-list">
+                        <li><strong>Συμβουλευτική Ασφαλείας:</strong> Προσβάσιμη</li>
+                        <li><strong>Αξιολόγηση Κινδύνου:</strong> Συμπεριλαμβάνεται</li>
+                        <li><strong>Εξαγωγή Έκτακτης Ανάγκης:</strong> Καλύπτεται</li>
+                        <li><strong>Προσωπική Προστασία:</strong> Διαθέσιμη</li>
+                        <li><strong>Οδηγίες Ασφαλείας:</strong> Πλήρες</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-title">🤝 Εταιρική Εκδήλωση</div>
+                    <div class="benefit-amount">€25,000</div>
+                    <p style="color: #4b5563; margin-bottom: 1rem;">Παροχή κεφαλαίου</p>
+                    <ul class="benefit-list">
+                        <li><strong>Επισκέπτες Εταιρείας:</strong> Καλύπτονται</li>
+                        <li><strong>Ατυχήματα Εκδηλώσεων:</strong> Συμπεριλαμβάνονται</li>
+                        <li><strong>Ευθύνη Τρίτων:</strong> Καλύπτεται</li>
+                        <li><strong>Ιατρικές Δαπάνες:</strong> Πλήρεις</li>
+                        <li><strong>Επαναπατρισμός:</strong> Συμπεριλαμβάνεται</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="info-card" style="margin-top: 2rem;">
+                <h2>⚠️ Σημαντικοί Αποκλεισμοί</h2>
+                <h3>Τι ΔΕΝ Καλύπτεται:</h3>
+                <ul style="list-style-type: disc; margin-left: 1.5rem; color: #4b5563; line-height: 1.8;">
+                    <li>Προϋπάρχουσες ιατρικές καταστάσεις (εκτός αν δηλωθούν)</li>
+                    <li>Ταξίδι ενάντια σε ιατρικές συμβουλές</li>
+                    <li>Χειρωνακτική εργασία (εκτός αν εγκριθεί προηγουμένως)</li>
+                    <li>Δραστηριότητες υψηλού κινδύνου χωρίς έγκριση</li>
+                    <li>Πόλεμος και ζώνες πολέμου</li>
+                    <li>Περιοχές με προειδοποίηση FCO</li>
+                    <li>Περιστατικά σχετικά με αλκοόλ ή ναρκωτικά</li>
+                    <li>Σκόπιμος τραυματισμός του εαυτού σας</li>
+                    <li>Εγκληματικές δραστηριότητες</li>
+                </ul>
+                <h3 style="color: #dc2626;">Χώρες Υψηλού Κινδύνου (Αποκλεισμός Απαγωγής):</h3>
+                <p>Αφγανιστάν, Κολομβία, Ιράκ, Μεξικό, Νιγηρία, Πακιστάν, Φιλιππίνες, Σομαλία, Βενεζουέλα, Υεμένη</p>
+            </div>
+        </div>
+
+        <div id="policy" class="section">
+            <div class="info-card">
+                <h2>📋 Policy Information</h2>
+                
+                <h3>Coverage Period</h3>
+                <p><strong>Certificate No:</strong> CGT P804302600</p>
+                <p><strong>Binder Reference:</strong> B1735ND0054525</p>
+                <p><strong>Start Date:</strong> 1st September 2026</p>
+                <p><strong>End Date:</strong> 31st August 2027</p>
+                <p><strong>Annual Day Limit:</strong> 250 days shared across all employees (internal Arrow/CHI tracking convention — not a figure stated in the policy wording itself)</p>
+                
+                <h3>Insured</h3>
+                <p><strong>Company:</strong> ARROW SHIPPING HELLAS S.A</p>
+                <p><strong>Address:</strong> Flisvos Marina, Building 6 (1st Floor), Palaio Faliro, 17561, Greece</p>
+                <p><strong>Underwriter:</strong> Lloyd’s Insurance Company S.A., via Pulse (Europe) — authorised and regulated by the FSMA, Belgium, No. 41241, and deemed authorised and regulated by the FCA.</p>
+
+                <h3>Coverage Highlights</h3>
+                <ul>
+                    <li>Worldwide coverage</li>
+                    <li>Business and incidental holiday travel</li>
+                    <li>All employees, spouses and dependent children</li>
+                    <li>24/7 emergency assistance</li>
+                    <li>Direct billing for major medical emergencies</li>
+                </ul>
+
+                <h3>Important Notes</h3>
+                <p>This is an <strong>informational system</strong> to help monitor travel days. The 250-day limit is shared across all employees collectively. Days are counted from departure to return date.</p>
+                
+                <p><strong>Canceled trips</strong> are excluded from the day count but remain visible for record-keeping purposes.</p>
+
+                <h3>How to Make a Complaint</h3>
+                <p>First contact CHI Insurance Brokers (below), or Crawford TPA. If still unresolved, complaints
+                go to Lloyd's Insurance Company S.A.: Service Manager, Operations Team, Bastion Tower,
+                Marsveldplein 5, 1050 Brussels, Belgium &mdash; Tel +32 (0)2 227 39 39, enquiries.lloydsbrussels@lloyds.com.
+                A decision is provided in writing within 50 calendar days. If still unresolved, you may refer
+                the matter to the Hellenic Consumers Ombudsman (within 3 months of the act/omission), the
+                Bank of Greece, the General Secretariat of Consumer Affairs, or the EU's ODR platform
+                (ec.europa.eu/odr) if purchased online.</p>
+
+                <div class="contact-box">
+                    <p><strong>Policy Questions?</strong></p>
+                    <p>Contact CHI Insurance Brokers:<br>
+                    📧 <a href="/cdn-cgi/l/email-protection#8be2e5ede4cbe8e3e2e2e5f8fef9eae5e8eee9f9e4e0eef9f8a5e8e4e6"><span class="__cf_email__" data-cfemail="7a13141c153a1912131314090f081b14191f180815111f080954191517">[email&#160;protected]</span></a><br>
+                    📞 +30 6975900189</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emergency Contacts Section -->
+        <div id="emergency" class="section">
+            <div class="info-card">
+                <h2>🚨 Emergency Contacts</h2>
+                
+                <h3>24/7 Medical Emergency</h3>
+                <p><strong>Call FIRST for any medical emergency abroad!</strong></p>
+                
+                <div class="contact-box">
+                    <p><strong>Healix International</strong></p>
+                    <p>📞 <a href="tel:+442086084227">+44 208 608 4227</a> (24/7)</p>
+                    <p>📧 <a href="/cdn-cgi/l/email-protection#5e37302a3b2c303f2a3731303f32363b3f322a363d3f2c3b1e363b3f323726703d3133"><span class="__cf_email__" data-cfemail="177e796372657976637e7879767b7f72767b637f74766572577f72767b7e6f3974787a">[email&#160;protected]</span></a></p>
+                    <p><strong>Healix Travel Oracle App registration code:</strong> CNP201125 (this is Healix’s own code — separate from Certificate No. CGT P804302600)</p>
+                </div>
+
+                <h3>Security & Kidnap Emergency</h3>
+                <div class="contact-box">
+                    <p><strong>Constellis</strong></p>
+                    <p>🌍 Rest of World: <a href="tel:+442072403237">+44 20 7240 3237</a></p>
+                    <p>🇺🇸 United States: <a href="tel:+17139186401">+1 713 918 6401</a></p>
+                    <p>🌐 <a href="https://www.constellis.com" target="_blank">www.constellis.com</a></p>
+                </div>
+
+                <h3>Claims Department</h3>
+                <p><strong>Crawford TPA</strong></p>
+                <p>📞 <a href="tel:+3227140360">+32 2 714 03 60</a></p>
+                <p>📧 <a href="/cdn-cgi/l/email-protection#8edefbe2fdebcde2efe7e3fdcecdfceff9ede1a0ede1a0fbe5"><span class="__cf_email__" data-cfemail="bdedc8d1ced8fed1dcd4d0cefdfecfdccaded293ded293c8d6">[email&#160;protected]</span></a></p>
+                <p>🌐 Online claim form: <a href="https://us-fnol.claims.global/PulseInsurance" target="_blank">Submit Claim</a></p>
+
+                <h3>CHI Insurance Brokers</h3>
+                <p>📧 <a href="/cdn-cgi/l/email-protection#1a73747c755a7972737374696f687b74797f786875717f686934797577"><span class="__cf_email__" data-cfemail="4d24232b220d2e252424233e383f2c232e282f3f2226283f3e632e2220">[email&#160;protected]</span></a></p>
+                <p>📞 +30 6975900189</p>
+                
+                <h3>Arrow Shipping Company Contacts</h3>
+                <p>📧 <a href="/cdn-cgi/l/email-protection#9deef2fbddfcefeff2eaeef5f4edb3fef2f0"><span class="__cf_email__" data-cfemail="8bf8e4edcbeaf9f9e4fcf8e3e2fba5e8e4e6">[email&#160;protected]</span></a></p>
+                <p>📧 <a href="/cdn-cgi/l/email-protection#771b041a371605051800041f1e075914181a"><span class="__cf_email__" data-cfemail="1b7768765b7a6969746c6873726b35787476">[email&#160;protected]</span></a></p>
+
+                <h3>What to Do in an Emergency</h3>
+                <ul>
+                    <li>Call the appropriate emergency number immediately</li>
+                    <li>Provide your certificate number (CGT P804302600) and location</li>
+                    <li>Follow the instructions from the assistance team</li>
+                    <li>Keep all receipts and documentation</li>
+                    <li>Notify your employer as soon as possible</li>
+                    <li>DO NOT commit to payments without authorization</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div id="about" class="section">
+            <div class="info-card">
+                <h2>ℹ️ About the Travel Tracker</h2>
+                
+                <h3>Purpose</h3>
+                <p>The Arrow Travel Tracker is an <strong>informational system</strong> designed to help Arrow Shipping Company monitor employee travel days against the annual 250-day policy limit.</p>
+
+                <h3>How It Works</h3>
+                <ul>
+                    <li>Tracks individual employee trips and dates</li>
+                    <li>Calculates cumulative days across all employees</li>
+                    <li>Shows remaining days available under the policy</li>
+                    <li>Marks completed and canceled trips</li>
+                    <li>Provides real-time visibility into travel utilization</li>
+                </ul>
+
+                <h3>System Features</h3>
+                <p><strong>Color-coded Progress Bars:</strong></p>
+                <ul>
+                    <li>🟢 Green: Under 40% utilized</li>
+                    <li>🔵 Blue: 40-60% utilized</li>
+                    <li>🟡 Yellow: 60-80% utilized</li>
+                    <li>🔴 Red: Over 80% utilized</li>
+                </ul>
+
+                <p><strong>Trip Status Indicators:</strong></p>
+                <ul>
+                    <li>Blue background: Upcoming/current trips</li>
+                    <li>Green background + ✓: Completed trips</li>
+                    <li>Red background + ✗: Canceled trips (not counted)</li>
+                </ul>
+
+                <h3>Created By</h3>
+                <p><strong>CHI Insurance Brokers</strong><br>
+                Developed by Chris Iatropoulos</p>
+                <p>© 2026 CHI Insurance Brokers. All rights reserved.</p>
+
+                <h3>License</h3>
+                <p class="footer-license">This travel tracking system is proprietary software developed for Arrow Shipping Company. Unauthorized copying, distribution, or modification of this software is strictly prohibited. This application is licensed exclusively for use by authorized personnel of Arrow Shipping Company and CHI Insurance Brokers.</p>
+
+                <h3>Technical Support</h3>
+                <p>For questions or issues with the tracker:</p>
+                <p>📧 <a href="/cdn-cgi/l/email-protection#bcd5d2dad3fcdfd4d5d5d2cfc9ceddd2dfd9deced3d7d9cecf92dfd3d1"><span class="__cf_email__" data-cfemail="20494e464f60434849494e535552414e434542524f4b4552530e434f4d">[email&#160;protected]</span></a></p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Created by CHI Insurance Brokers</h3>
+                    <p class="footer-subtitle">Developed by Chris Iatropoulos</p>
+                    <p class="footer-copyright">© 2026 CHI Insurance Brokers. All rights reserved.</p>
+                </div>
+                <div class="footer-section">
+                    <p class="footer-access-title">🛡️ Authorized Access</p>
+                    <p class="footer-contacts">
+                        <a href="/cdn-cgi/l/email-protection#b2dbdcd4ddf2d1dadbdbdcc1c7c0d3dcd1d7d0c0ddd9d7c0c19cd1dddf"><span class="__cf_email__" data-cfemail="1f767179705f7c777676716c6a6d7e717c7a7d6d70747a6d6c317c7072">[email&#160;protected]</span></a> | <a href="/cdn-cgi/l/email-protection#cab9a5ac8aabb8b8a5bdb9a2a3bae4a9a5a7"><span class="__cf_email__" data-cfemail="f1829e97b19083839e8682999881df929e9c">[email&#160;protected]</span></a> | <a href="/cdn-cgi/l/email-protection#8be2e5ede4cbe4e0ffe4a5ecf9"><span class="__cf_email__" data-cfemail="a7cec9c1c8e7c8ccd3c889c0d5">[email&#160;protected]</span></a> | <a href="/cdn-cgi/l/email-protection#ef839c82af8e9d9d80989c87869fc18c8082"><span class="__cf_email__" data-cfemail="cca0bfa18cadbebea3bbbfa4a5bce2afa3a1">[email&#160;protected]</span></a> | <a href="/cdn-cgi/l/email-protection#b0dfc3dcd1ded5c9f0c0c5dcc3d59dd9dec3c5c2d1ded3d59ed3df9ec5db"><span class="__cf_email__" data-cfemail="2748544b4649425e6757524b54420a4e495452554649444209444809524c">[email&#160;protected]</span></a>
+                    </p>
+                    <p class="footer-tagline">✨ Stay safe, travel smart! ✨</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const employees = [
+            { name: "CHALARI XAGORARI SOFIA", email: "sof@arrowship.com", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
+            { name: "MEIDANI GARYFALIA (LITSA)", email: "lsm@arrowship.com", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
+            { name: "SAVVA KALLIRROI", email: "", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
+            { name: "KAVALEKAS STERGIOS", email: "", trips: [{ days: 7, dates: "29/09/2025 - 05/10/2025", route: "ATH-SIN-ATH" }, { days: 7, dates: "07/03/2026 - 13/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
+            { name: "KOSTOGIANNIS ANARGYROS", email: "", trips: [{ days: 8, dates: "27/09/2025 - 04/10/2025", route: "ATH-SIN-ATH" }, { days: 3, dates: "11/02/2026 - 13/02/2026", route: "ATH-AMS-STANSTED-ATH" }, {days: 5, dates: "26/04/2026 - 30/04/2026", route: "ATH-GVA-ATH"}] },
+            { name: "KOSTOPOULOS KONSTANTINOS", email: "", trips: [{ days: 11, dates: "28/09/2025 - 08/10/2025", route: "ATH-SIN-GVA-ATH" }, { days: 4, dates: "02/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 5, dates: "26/04/2026 - 30/04/2026", route: "ATH-GVA-ATH" }, {days: 5, dates: "03/03/2026 - 7/03/2026", route: "ATH-LHR-ATH" },{ days: 2, dates: "06/05/2026 - 07/05/2026", route: "ATH-HAM-ATH" }] },
+            { name: "IAN KOURTZAS", email: "", trips: [{ days: 13, dates: "27/09/2025 - 09/10/2025", route: "ATH-SIN-ATH" }] },
+            { name: "LEONIDES LEE-MICHALOPOULOS", email: "", trips: [{ days: 3, dates: "04/11/2025 - 06/11/2025", route: "ATH-HAM-ATH" }, { days: 2, dates: "03/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "28/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
+            { name: "GIOVANNI RAMI", email: "", trips: [{ days: 2, dates: "05/11/2025 - 06/11/2025", route: "ATH-HAM-ATH" }, { days: 2, dates: "19/11/2025 - 20/11/2025", route: "ATH-GVA-ATH" }, { days: 4, dates: "04/12/2025 - 07/12/2025", route: "ATH-DOH-DXB-ATH" }, { days: 6, dates: "25/01/2026 - 30/01/2026", route: "ATH-LONDON-ATH" } ] },
+            { name: "PIERRE LOTH", email: "", trips: [{ days: 3, dates: "05/11/2025 - 07/11/2025", route: "ATH-HAM-ATH" }, { days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, {  days: 4, dates: "27/04/2026 - 30/04/2026", route: "ATH-GVA-ATH"},{ days: 2, dates: "06/05/2026 - 07/05/2026", route: "ATH-HAM-ATH" }] },
+            { name: "MYRSINI ANDREOU", email: "", trips: [{ days: 6, dates: "08/11/2025 - 13/11/2025", route: "ATH-SIN-ATH" }, { days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "04/12/2025 - 05/12/2025", route: "GVA-LONDON-ATH" }, { days: 3, dates: "27/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }, { days: 3, dates: "16/09/2026 - 18/09/2026", route: "ATH-GVA-ATH" } ] },
+            { name: "CONSTANTINE MARK HADJIPATERAS", email: "", trips: [{ days: 9, dates: "09/11/2025 - 17/11/2025", route: "ATH-DXB-ATH", canceled: true }, { days: 5, dates: "08/02/2026 - 12/02/2026", route: "ATH-LONDON-ATH" }, { days: 3, dates: "07/03/2026 - 09/03/2026", route: "ATH-PVG-HND" }, { days: 4, dates: "09/03/2026 - 12/03/2026", route: "PVG-HND-ATH" },  {days: 2, dates: "12/05/2026 - 13/05/2026", route: "ATH-LHR-ATH" }] },
+            { name: "ANGELIKI MARIA KASTANA", email: "", trips: [{ days: 10, dates: "28/11/2025 - 06/12/2025", route: "ATH-LONDON-ATH" }] },
+            { name: "VASILIKI ATHINA PETRAKI", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 5, dates: "27/04/2026 - 01/05/2026", route: "ATH-GVA-ATH" }] },
+            { name: "PIERAS PASCHALIDES", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "19/02/2026 - 20/02/2026", route: "ATH-LUG-ATH" }, { days:4, dates: "26/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
+            { name: "NIKOS PAPADOPOULOS", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }] },
+            { name: "KONSTANTINOS MOUMOURIS", email: "", trips: [{ days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "11/02/2026 - 12/02/2026", route: "ATH-AMS-ATH" }, { days: 2, dates: "30/06/2026 - 01/07/2026", route: "ATH-AMS-ATH"}] },
+            { name: "SOFIA EVGENIA FYRIOU", email: "", trips: [{ days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }] },
+            { name: "DIMITRIOS GKOUMAS", email: "", trips: [{ days: 5, dates: "01/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }, { days: 2, dates: "28/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
+            { name: "MARIA SEVDALI", email: "", trips: [{ days: 7, dates: "03/12/2025 - 09/12/2025", route: "ATH-LONDON-ATH" }] },
+            { name: "ALIKI TSAGKRONI", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }] },
+            { name: "KONSTANTINOS EMMANOUILIDIS", email: "", trips: [{ days: 4, dates: "02/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }] },
+            { name: "PANAGIOTIS DRILARIS", email: "", trips: [{ days: 5, dates: "02/12/2025 - 06/12/2025", route: "ATH-DXB-ATH", canceled: true },{ days: 8, dates: "07/03/2026 - 14/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
+            { name: "MAXIMILLIAN KATSAROS", email: "", trips: [{ days: 5, dates: "03/12/2025 - 07/12/2025", route: "ATH-GVA-ATH" },{ days: 5, dates: "16/02/2026 - 20/02/2026", route: "ATH-GVA-ATH" },{ days: 4, dates: "27/04/2026 - 30/04/2026", route: "ATH-GVA-ATH" },{days: 2, dates: "30/06/2026 - 01/07/2026", route: "ATH-AMS-ATH"}] },
+            { name: "ATHANASIOS ANAGNOSTOPOULOS", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }] },
+            { name: "GEORGIOS FOTAKIS", email: "", trips: [{ days: 8, dates: "10/01/2026 - 17/01/2026", route: "ATH-SIN-ATH" }] },
+            { name: "DESPOINA CHATZIDAKI", email: "", trips: [{ days: 6, dates: "07/03/2026 - 12/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
+            { name: "ATHANASIA SEVDALI", email: "", trips: [{ days: 6, dates: "07/03/2026 - 12/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
+            { name: "ODYSSEAS RENIERIS", email: "", trips: [{ days: 3, dates: "27/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
+            { name: "JANEK EKELI", email: "", trips: [{ days: 2, dates: "23/04/2026 - 24/04/2026", route: "ATH-CDG-ATH" }] },
+         
+        ];
+
+        const MAX_DAYS = 250;
+
+        const MIDDLE_EAST_IATA = new Set(["DXB","DWC","AUH","SHJ","DOH","BAH","KWI","MCT","RUH","JED","DMM","AMM","BEY","TLV","BGW","EBL","IKA","THR"]);
+        const IATA_TO_FCDO = {
+            DXB:{country:"United Arab Emirates",slug:"united-arab-emirates"},
+            DWC:{country:"United Arab Emirates",slug:"united-arab-emirates"},
+            AUH:{country:"United Arab Emirates",slug:"united-arab-emirates"},
+            SHJ:{country:"United Arab Emirates",slug:"united-arab-emirates"},
+            DOH:{country:"Qatar",slug:"qatar"},
+            BAH:{country:"Bahrain",slug:"bahrain"},
+            KWI:{country:"Kuwait",slug:"kuwait"},
+            MCT:{country:"Oman",slug:"oman"},
+            RUH:{country:"Saudi Arabia",slug:"saudi-arabia"},
+            JED:{country:"Saudi Arabia",slug:"saudi-arabia"},
+            DMM:{country:"Saudi Arabia",slug:"saudi-arabia"},
+            AMM:{country:"Jordan",slug:"jordan"},
+            BEY:{country:"Lebanon",slug:"lebanon"},
+            TLV:{country:"Israel",slug:"israel"},
+            BGW:{country:"Iraq",slug:"iraq"},
+            EBL:{country:"Iraq",slug:"iraq"},
+            IKA:{country:"Iran",slug:"iran"},
+            THR:{country:"Iran",slug:"iran"}
+        };
+
+        function getIataCodesFromRoute(routeText){
+            return String(routeText || '').split('-').map(x => x.trim().toUpperCase()).filter(Boolean);
+        }
+
+        function getMiddleEastDestinationsFromTrip(trip){
+            const codes = getIataCodesFromRoute(trip.route);
+            return [...new Set(codes.filter(c => c !== 'ATH' && MIDDLE_EAST_IATA.has(c)))];
+        }
+
+        function buildFcdoLink(slug){
+            return `https://www.gov.uk/foreign-travel-advice/${slug}`;
+        }
+
+        function updateTravelAlerts(employees){
+            const pulseBanner = document.getElementById('pulseBanner');
+            const fcdoBanner = document.getElementById('fcdoBanner');
+            const fcdoLinks = document.getElementById('fcdoLinks');
+            if(!pulseBanner || !fcdoBanner || !fcdoLinks) return;
+
+            const destinations = new Set();
+            employees.forEach(emp => (emp.trips || []).forEach(trip => {
+                getMiddleEastDestinationsFromTrip(trip).forEach(code => destinations.add(code));
+            }));
+
+            const codes = [...destinations].sort();
+            if(codes.length === 0){
+                pulseBanner.classList.add('hidden');
+                fcdoBanner.classList.add('hidden');
+                return;
+            }
+
+            if(localStorage.getItem('pulseBannerDismissed_v2') !== '1'){
+                pulseBanner.classList.remove('hidden');
+            }
+            fcdoBanner.classList.remove('hidden');
+
+            const links = codes.map(code => {
+                const map = IATA_TO_FCDO[code];
+                if(!map) return '';
+                return `<a class="fcdo-pill" href="${buildFcdoLink(map.slug)}" target="_blank" rel="noopener noreferrer">FCDO: ${map.country}</a>`;
+            }).filter(Boolean).join('');
+            fcdoLinks.innerHTML = links || `<a class="fcdo-pill" href="https://www.gov.uk/foreign-travel-advice" target="_blank" rel="noopener noreferrer">Open FCDO travel advice</a>`;
+        }
+
+        function dismissPulseBanner(){
+            localStorage.setItem('pulseBannerDismissed_v2', '1');
+            const el = document.getElementById('pulseBanner');
+            if(el) el.classList.add('hidden');
+        }
+
+        function openPulseModal(){
+            const el = document.getElementById('pulseModal');
+            if(el) el.classList.remove('hidden');
+        }
+
+        function closePulseModal(){
+            const el = document.getElementById('pulseModal');
+            if(el) el.classList.add('hidden');
+        }
+
+        window.dismissPulseBanner = dismissPulseBanner;
+        window.openPulseModal = openPulseModal;
+        window.closePulseModal = closePulseModal;
+
+
+        function calculateTotalDays(emp) {
+            return emp.trips.reduce((sum, trip) => {
+                if (trip.canceled) return sum;
+                return sum + trip.days;
+            }, 0);
+        }
+
+        function parseDateDMY(dmy) {
+            try {
+                const parts = (dmy || "").split('/');
+                const day = parseInt(parts[0], 10);
+                const month = parseInt(parts[1], 10) - 1;
+                const year = parseInt(parts[2], 10);
+                if (!day || month < 0 || !year) return null;
+                const d = new Date(year, month, day);
+                d.setHours(0, 0, 0, 0);
+                return d;
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function getTripRange(tripDates) {
+            const [startStr, endStr] = (tripDates || "").split(" - ").map(s => (s || "").trim());
+            const start = parseDateDMY(startStr);
+            const end = parseDateDMY(endStr);
+            return { start, end };
+        }
+
+        function getTripStatus(trip) {
+            if (trip.canceled) return "canceled";
+            const { start, end } = getTripRange(trip.dates);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (start && today < start) return "pending";
+            if (end && today > end) return "expired";
+            // If we can't parse dates, keep it as pending to avoid false "expired"
+            if (!start || !end) return "pending";
+            return "active";
+        }
+
+        const POLICY_END_DATE = new Date(2027, 7, 31); // 31/08/2027 (month is 0-indexed)
+        const MAX_TRIP_DAYS_STANDARD = 90;
+
+        // Kept in sync with the Endorsements section of Certificate CGT P804302600:
+        // the Kidnap exclusion list, plus the named War/Unrest/Disruption countries
+        // (Belarus, Russia, Ukraine, Gaza, Israel, Lebanon). This flags a trip for
+        // manual review -- it is not a determination of cover; always check current
+        // FCDO advice at the time of travel.
+        const EXCLUDED_KEYWORDS = [
+            "AFGHANISTAN", "BELARUS", "COLOMBIA", "GAZA", "ISRAEL", "IRAQ", "LEBANON",
+            "MEXICO", "NIGERIA", "PAKISTAN", "PHILIPPINES", "RUSSIA", "SOMALIA",
+            "UKRAINE", "VENEZUELA", "YEMEN"
+        ];
+
+        function getInsuranceFlags(trip) {
+            const flags = [];
+            const { start, end } = getTripRange(trip.dates);
+
+            if (!trip.canceled && typeof trip.days === "number" && trip.days > MAX_TRIP_DAYS_STANDARD) {
+                flags.push({
+                    text: "Duration",
+                    tooltip: "⚠️ This trip exceeds standard annual travel cover (90 days)"
+                });
+            }
+
+            if (!trip.canceled && end && end > POLICY_END_DATE) {
+                flags.push({
+                    text: "Policy Expiry",
+                    tooltip: "⚠️ Trip overlaps with policy end date (31/08/2027)"
+                });
+            }
+
+            const routeUpper = String(trip.route || "").toUpperCase();
+            const hit = EXCLUDED_KEYWORDS.find(k => routeUpper.includes(k));
+            if (!trip.canceled && hit) {
+                flags.push({
+                    text: "Geo limit",
+                    tooltip: `⚠️ Destination may fall under geographical limitations/exclusions (${hit})`
+                });
+            }
+
+            return flags;
+        }
+
+        function getStatusEmoji(daysRemaining) {
+            if (daysRemaining > 200) return "🌟";
+            if (daysRemaining > 150) return "✈️";
+            if (daysRemaining > 100) return "🎒";
+            if (daysRemaining > 50) return "⚠️";
+            return "🚨";
+        }
+
+        function getProgressColor(percentage) {
+            if (percentage < 40) return "progress-green";
+            if (percentage < 60) return "progress-blue";
+            if (percentage < 80) return "progress-yellow";
+            return "progress-red";
+        }
+
+        function toggleDropdown() {
+            const menu = document.querySelector('.dropdown-menu');
+            menu.classList.toggle('show');
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = ['tracker', 'benefits', 'benefits-gr', 'policy', 'emergency', 'about'];
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (section) {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.style.display = 'block';
+            }
+
+            // Update active menu item
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Close dropdown
+            document.querySelector('.dropdown-menu').classList.remove('show');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown && !dropdown.contains(event.target)) {
+                document.querySelector('.dropdown-menu').classList.remove('show');
+            }
+        });
+
+        
+        // --------------------------
+        // Export (ALL years) - HR friendly
+        // --------------------------
+        function exportAllCSV() {
+            const rows = [];
+            employees.forEach(emp => {
+                (emp.trips || []).forEach(trip => {
+                    const r = getTripRange(trip.dates);
+                    const year = r.start ? r.start.getFullYear() : '';
+                    rows.push({
+                        employee: emp.name || '',
+                        email: emp.email || '',
+                        year,
+                        days: trip.days || '',
+                        dates: trip.dates || '',
+                        route: trip.route || '',
+                        canceled: trip.canceled ? 'Yes' : 'No'
+                    });
+                });
+            });
+
+            const header = ["Employee","Email","Year","Days","Dates","Route","Canceled"];
+            const csv = [header.join(",")].concat(rows.map(r => [
+                csvEscape(r.employee),
+                csvEscape(r.email),
+                csvEscape(String(r.year)),
+                csvEscape(String(r.days)),
+                csvEscape(r.dates),
+                csvEscape(r.route),
+                csvEscape(r.canceled)
+            ].join(","))).join("\n");
+
+
+            downloadTextFile(csv, "arrow-travel-trips-all-years.csv", "text/csv;charset=utf-8;");
+        }
+
+        
+        function csvEscape(value) {
+  const s = (value ?? "").toString();
+  if (/[",\\n]/.test(s)) return "\"" + s.replace(/"/g, "\"\"") + "\"";
+  return s;
+}
+
+function downloadTextFile(text, filename, mime) {
+            const blob = new Blob([text], { type: mime || "text/plain;charset=utf-8;" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(()=>URL.revokeObjectURL(url), 1000);
+        }
+
+
+
+        function buildTripKey(emp, trip) {
+            return `${emp.name}__${trip.dates}__${trip.route}__${trip.days || 0}__${trip.canceled ? 1 : 0}`;
+        }
+
+        function getAllTripsChronological() {
+            // Rules: canceled trips are excluded entirely.
+            // Pending (future) trips DO count — they reserve days from the shared pool.
+            // The running balance is one global sequence across all employees.
+            const rows = [];
+            employees.forEach(emp => {
+                (emp.trips || []).forEach(trip => {
+                    if (trip.canceled) return;   // canceled → skip
+                    const { start } = getTripRange(trip.dates);
+                    if (!start) return;
+                    rows.push({ emp, trip, start, key: buildTripKey(emp, trip) });
+                });
+            });
+
+            rows.sort((a, b) => {
+                const diff = a.start.getTime() - b.start.getTime();
+                if (diff !== 0) return diff;
+                return a.emp.name.localeCompare(b.emp.name);
+            });
+
+            return rows;
+        }
+
+        function buildTripRemainingMap() {
+            const chronologicalTrips = getAllTripsChronological();
+            const remainingMap = {};
+            let runningTotal = 0;
+
+            chronologicalTrips.forEach(({ emp, trip, key }) => {
+                runningTotal += Number(trip.days || 0);
+                remainingMap[key] = {
+                    cumulativeDays: runningTotal,
+                    remaining: Math.max(MAX_DAYS - runningTotal, 0),
+                    pct: (runningTotal / MAX_DAYS) * 100
+                };
+            });
+
+            return remainingMap;
+        }
+
+        function calculateStats() {
+            const totalEmployees = employees.length;
+            const totalDays = employees.reduce((sum, emp) => sum + calculateTotalDays(emp), 0);
+            const daysRemaining = Math.max(MAX_DAYS - totalDays, 0);
+            const avgDays = totalEmployees ? (totalDays / totalEmployees).toFixed(1) : '0.0';
+
+            const totalEmployeesEl = document.getElementById('totalEmployees');
+            const totalDaysEl = document.getElementById('totalDays');
+            const daysRemainingEl = document.getElementById('daysRemaining');
+            const avgDaysEl = document.getElementById('avgDays');
+
+            if (totalEmployeesEl) totalEmployeesEl.textContent = totalEmployees;
+            if (totalDaysEl) totalDaysEl.textContent = totalDays;
+            if (daysRemainingEl) daysRemainingEl.textContent = daysRemaining;
+            if (avgDaysEl) avgDaysEl.textContent = avgDays;
+        }
+
+        function renderEmployees() {
+            const container = document.getElementById('employeesList');
+            if (!container) return;
+
+            let html = '';
+            const tripRemainingMap = buildTripRemainingMap();
+
+            const yearsSet = new Set();
+            employees.forEach(emp => {
+                (emp.trips || []).forEach(trip => {
+                    const { start } = getTripRange(trip.dates);
+                    if (start) yearsSet.add(start.getFullYear());
+                });
+            });
+
+            const years = Array.from(yearsSet).sort((a, b) => b - a);
+            if (years.length === 0) years.push(2026, 2025);
+
+            function getTripsForYear(emp, year) {
+                const trips = (emp.trips || []).filter(t => {
+                    const { start } = getTripRange(t.dates);
+                    return start ? start.getFullYear() === year : false;
+                });
+
+                // Newest trip first within the selected year
+                trips.sort((a, b) => {
+                    const ra = getTripRange(a.dates);
+                    const rb = getTripRange(b.dates);
+                    if (!ra.start || !rb.start) return 0;
+                    return rb.start - ra.start;
+                });
+
+                return trips;
+            }
+
+            function getLatestNonCanceledTripMeta(trips, emp) {
+                return trips
+                    .filter(trip => !trip.canceled)
+                    .map(trip => ({
+                        trip,
+                        range: getTripRange(trip.dates),
+                        meta: tripRemainingMap[buildTripKey(emp, trip)]
+                    }))
+                    .filter(x => x.range.start && x.meta)
+                    .sort((a, b) => b.range.start - a.range.start)[0] || null;
+            }
+
+            // Returns the remaining-days meta for the employee's globally latest
+            // counted (non-canceled) trip, across ALL years — used for the card header.
+            function getGlobalLatestTripMeta(emp) {
+                return (emp.trips || [])
+                    .filter(trip => !trip.canceled)
+                    .map(trip => ({
+                        trip,
+                        range: getTripRange(trip.dates),
+                        meta: tripRemainingMap[buildTripKey(emp, trip)]
+                    }))
+                    .filter(x => x.range.start && x.meta)
+                    .sort((a, b) => b.range.start - a.range.start)[0] || null;
+            }
+
+            function sumDaysForYear(emp, year) {
+                return getTripsForYear(emp, year).reduce((sum, trip) => {
+                    if (trip.canceled) return sum;
+                    return sum + Number(trip.days || 0);
+                }, 0);
+            }
+
+            years.forEach(year => {
+                const employeesInYear = employees
+                    .map(emp => ({ emp, trips: getTripsForYear(emp, year) }))
+                    .filter(x => x.trips.length > 0 && x.trips.some(t => !t.canceled));
+
+                // Sort by remaining days ASC → most urgent (fewest days left) appears first.
+                // Tie-break: earliest global latest trip date, then name A→Z.
+                employeesInYear.sort((a, b) => {
+                    const ma = getGlobalLatestTripMeta(a.emp);
+                    const mb = getGlobalLatestTripMeta(b.emp);
+                    const ra = ma ? ma.meta.remaining : MAX_DAYS;
+                    const rb = mb ? mb.meta.remaining : MAX_DAYS;
+                    if (ra !== rb) return ra - rb;
+                    const ta = ma ? ma.range.start.getTime() : 0;
+                    const tb = mb ? mb.range.start.getTime() : 0;
+                    if (ta !== tb) return ta - tb;
+                    return a.emp.name.localeCompare(b.emp.name);
+                });
+
+                if (employeesInYear.length === 0) return;
+
+                html += `
+                    <div class="year-separator">
+                        <div class="year-separator-title">----------------------------- ${year} -----------------------------</div>
+                        <div class="year-separator-subtitle">Employees who traveled in ${year}</div>
+                    </div>
+                `;
+
+                employeesInYear.forEach(({ emp, trips }) => {
+                    const yearDays = sumDaysForYear(emp, year);
+                    // Card header: always reflect the employee's globally latest counted trip
+                    const latestTripMeta = getGlobalLatestTripMeta(emp);
+                    const remainingAfterLatest = latestTripMeta ? latestTripMeta.meta.remaining : MAX_DAYS;
+                    const percentageUpToLatest = latestTripMeta ? latestTripMeta.meta.pct : 0;
+
+                    html += `
+                        <div class="employee-card">
+                            <div class="employee-header">
+                                <div class="employee-info">
+                                    <h3>
+                                        <span>${getStatusEmoji(remainingAfterLatest)}</span>
+                                        ${emp.name}
+                                    </h3>
+                                    ${emp.email ? `<p class="employee-email">📧 ${emp.email}</p>` : ''}
+                                </div>
+                                <div class="employee-days">
+                                    <div class="employee-days-value">${yearDays}</div>
+                                    <div class="employee-days-label">days traveled (${year})</div>
+                                </div>
+                            </div>
+
+                            <div class="progress-section">
+                                <div class="progress-header">
+                                    <span class="progress-label">Progress (all trips 2025–2026)</span>
+                                    <span class="progress-remaining">${remainingAfterLatest} days remaining</span>
+                                </div>
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar ${getProgressColor(percentageUpToLatest)}" 
+                                         style="width: ${Math.min(percentageUpToLatest, 100)}%"></div>
+                                </div>
+                            </div>
+
+                            <div class="trips-section">
+                                <h4>🗺️ Trip History (${year}):</h4>
+                                ${trips.map((trip, index) => {
+                                    const status = getTripStatus(trip);
+                                    const isCanceled = status === 'canceled';
+                                    // Show remaining on the most-recent non-canceled trip in this card
+                                    const firstNonCanceledIdx = trips.findIndex(t => !t.canceled);
+                                    const isMostRecentTripInCard = (index === firstNonCanceledIdx);
+                                    const tripMeta = !isCanceled ? tripRemainingMap[buildTripKey(emp, trip)] : null;
+
+                                    let cardClass = 'trip-card-pending';
+                                    let badgeClass = 'trip-days-pending';
+
+                                    if (status === 'active') {
+                                        cardClass = 'trip-card-active';
+                                        badgeClass = 'trip-days-active';
+                                    } else if (status === 'expired') {
+                                        cardClass = 'trip-card-completed';
+                                        badgeClass = 'trip-days-completed';
+                                    } else if (status === 'canceled') {
+                                        cardClass = 'trip-card-canceled';
+                                        badgeClass = 'trip-days-canceled';
+                                    }
+
+                                    const statusBadge = (() => {
+                                        if (status === 'active') return `<span class="status-badge status-active">🟢 Active</span>`;
+                                        if (status === 'pending') return `<span class="status-badge status-pending">🟡 Pending</span>`;
+                                        if (status === 'expired') return `<span class="status-badge status-expired">🔴 Expired</span>`;
+                                        return '';
+                                    })();
+
+                                    const flags = getInsuranceFlags(trip)
+                                        .map(f => `<span class="flag" title="${f.tooltip}"><span class="flag-icon">⚠️</span>${f.text}</span>`)
+                                        .join('');
+
+                                    const remainingInfo = (tripMeta && isMostRecentTripInCard)
+                                        ? `<div class="trip-dates" style="margin-top:0.5rem;font-weight:700;color:#3730a3;font-size:0.85rem;">
+                                              📊 Pool balance after this trip: <strong>${tripMeta.remaining} days remaining</strong> of ${MAX_DAYS}
+                                           </div>`
+                                        : '';
+
+                                    return `
+                                        <div class="trip-card ${cardClass}">
+                                            <div class="trip-content">
+                                                <div class="trip-details">
+                                                    <div class="trip-route">
+                                                        <p class="trip-route-text ${isCanceled ? 'trip-route-text-canceled' : ''}">${trip.route}</p>
+                                                        ${isCanceled
+                                                            ? `<span class="canceled-badge">✗ Canceled</span>`
+                                                            : status === 'expired'
+                                                                ? `<span class="completed-badge">✓ Completed</span>`
+                                                                : statusBadge}
+                                                        ${flags}
+                                                    </div>
+                                                    <div class="trip-dates ${isCanceled ? 'trip-dates-canceled' : ''}">📅 ${trip.dates}</div>
+                                                    ${remainingInfo}
+                                                </div>
+                                                <div class="trip-days">
+                                                    <span class="trip-days-badge ${badgeClass}">${trip.days || 0} days</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+            });
+
+            container.innerHTML = html;
+        }
+
+        calculateStats();
+        renderEmployees();
+        updateTravelAlerts(employees);
+    </script>
+
+    <!-- HAL: policy explainer chat, grounded only in Certificate CGT P804302600 -->
+    <button id="halFab" onclick="openHalChat()">🤖 Ask HAL</button>
+    <div id="halPanel" role="dialog" aria-modal="true" aria-labelledby="halPanelTitle">
+        <div class="hal-header">
+            <div>
+                <span id="halPanelTitle">HAL — your cover, explained</span>
+                <small>Grounded in Certificate CGT P804302600 only</small>
+            </div>
+            <button class="hal-close" onclick="closeHalChat()" aria-label="Close">✕</button>
+        </div>
+        <div class="hal-messages" id="halMessages">
+            <div class="hal-msg bot">Hi, I'm HAL. Ask me anything about Arrow's travel certificate — e.g. "am I covered for scuba diving?" or "how much is the baggage single-item limit?" I only answer from the policy wording, and I'll say so plainly if something isn't in it.</div>
+        </div>
+        <div class="hal-input-row">
+            <input id="halInput" type="text" placeholder="Ask about your cover..." onkeydown="if(event.key==='Enter') sendHalMessage();" />
+            <button id="halSendBtn" onclick="sendHalMessage()">Send</button>
+        </div>
+        <div class="hal-disclaimer">HAL explains policy wording only — it doesn't confirm individual claims. For a live claim, use Crawford TPA / Healix / Constellis under Emergency Contacts.</div>
+    </div>
+
+    <script>
+        // HAL config: same-origin by default (backend serves this file). Override by
+        // setting window.HAL_API_BASE before this script if the frontend and API are
+        // deployed separately.
+        const HAL_API_BASE = window.HAL_API_BASE || '';
+        let halHistory = [];
+
+        function openHalChat() {
+            document.getElementById('halPanel').classList.add('show');
+            document.getElementById('halInput').focus();
+        }
+        function closeHalChat() {
+            document.getElementById('halPanel').classList.remove('show');
+        }
+        window.openHalChat = openHalChat;
+        window.closeHalChat = closeHalChat;
+
+        function appendHalMessage(role, text, citations) {
+            const wrap = document.getElementById('halMessages');
+            const div = document.createElement('div');
+            div.className = 'hal-msg ' + (role === 'user' ? 'user' : 'bot');
+            div.textContent = text;
+            if (citations && citations.length) {
+                const cite = document.createElement('span');
+                cite.className = 'hal-cite';
+                cite.textContent = 'Source: ' + citations.join(', ');
+                div.appendChild(cite);
+            }
+            wrap.appendChild(div);
+            wrap.scrollTop = wrap.scrollHeight;
+        }
+
+        async function sendHalMessage() {
+            const input = document.getElementById('halInput');
+            const btn = document.getElementById('halSendBtn');
+            const text = input.value.trim();
+            if (!text) return;
+
+            appendHalMessage('user', text);
+            halHistory.push({ role: 'user', content: text });
+            input.value = '';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(HAL_API_BASE + '/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: text, history: halHistory.slice(-10) })
+                });
+                if (!res.ok) throw new Error('HAL request failed (' + res.status + ')');
+                const data = await res.json();
+                appendHalMessage('bot', data.answer, data.citations);
+                halHistory.push({ role: 'assistant', content: data.answer });
+            } catch (err) {
+                appendHalMessage('bot', "I couldn't reach the policy assistant just now. For anything urgent, please use the Emergency Contacts section instead.");
+                console.error(err);
+            } finally {
+                btn.disabled = false;
+                input.focus();
+            }
+        }
+        window.sendHalMessage = sendHalMessage;
+    </script>
+</body>
+</html>

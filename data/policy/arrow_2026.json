@@ -1,0 +1,315 @@
+{
+  "certificate": {
+    "certificate_no": "CGT P804302600",
+    "binder_reference": "B1735ND0054525",
+    "broker_ref": "50228C",
+    "assured": "ARROW SHIPPING HELLAS S.A",
+    "address": "Flisvos Marina, Building 6 (1st Floor), Palaio Faliro, 17561, Greece",
+    "period_of_insurance": "1st September 2026 to 31st August 2027 (both dates inclusive)",
+    "premium_eur": 2267.50,
+    "insurance_premium_tax_eur": 340.13,
+    "total_eur": 2607.63,
+    "underwriter": "Lloyd's Insurance Company S.A.",
+    "administrator": "Pulse (Europe), trading name of Classic Financial Solutions BV",
+    "regulator": "Authorised and regulated by the FSMA, Belgium, No. 41241, and deemed authorised and regulated by the FCA.",
+    "insured_persons": "All Directors and Employees of the Assured as per Schedule declared to Underwriters, including Spouse/Partner and Dependent Child/Children (where the appropriate premiums have been paid).",
+    "geographical_limits": "Worldwide",
+    "holiday_inclusion_clause": "Not Included",
+    "winter_sports_inclusion_clause": "Not included on its own, but see 'winter_sports' entry below for the standalone clause text should it be added later",
+    "usual_country_of_residence_secondment_extension_applies_to": ["Section 2", "Section 3", "Section 4", "Section 5", "Section 10"],
+    "source": "Group Travel Insurance Certificate CGT P804302600, pages 3-4"
+  },
+  "any_one_accident_limit": {
+    "definition": "The maximum amount Underwriters will pay in the aggregate under this Certificate in respect of all Insured Persons suffering Bodily Injury following an Accident in the same Accident or series of Accidents contributed to, caused by, or consequent upon the same original cause, event or circumstance.",
+    "limit_eur": 10000000,
+    "proportional_reduction_rule": "In the event of any one incident exceeding this figure, the Underwriters' liability in respect of each Insured Person shall be proportionately reduced until their total liability does not exceed said limit.",
+    "source": "Endorsements, page 5"
+  },
+  "endorsements": {
+    "war_unrest_disruption": {
+      "rule": "Cover under this Certificate EXCLUDES all travel to areas of War, Unrest or Disruption unless declared and Agreed by Underwriters prior to travelling to such areas.",
+      "business_travel_definition": "A Country or region to which the FCDO advise against 'ALL' travel, along with Belarus, Russia, Ukraine, Gaza, Israel & Lebanon.",
+      "holiday_travel_definition": "A Country or region to which the FCDO advise against 'ALL' or 'All but Essential' travel (www.gov.uk/foreign-travel-advice), along with Belarus, Russia, Ukraine, Gaza, Israel & Lebanon."
+    },
+    "kidnap_exclusion": {
+      "rule": "Cover EXCLUDES any Kidnap which occurs in the named countries, or any other region/country to which the Insured Person has travelled where the UK FCDO has advised against 'all travel or all travel due to the threat of kidnap' (or similar advice for non-UK-resident Insured Persons) prior to the commencement of the trip.",
+      "named_countries": ["Afghanistan", "Belarus", "Colombia", "Gaza", "Israel", "Iraq", "Lebanon", "Mexico", "Nigeria", "Pakistan", "Philippines", "Russia", "Somalia", "Ukraine", "Venezuela", "Yemen"]
+    },
+    "source": "Endorsements, page 5"
+  },
+  "sections": {
+    "1": {
+      "title": "Medical Expenses, Repatriation and Emergency Travel Expenses",
+      "sum_insured_eur": 10000000,
+      "covers": "Medical Expenses, Repatriation and Emergency Travel Expenses necessarily incurred following Bodily Injury (Accident) or Illness during an Insured Journey.",
+      "extensions": {
+        "funeral_expenses_eur": 10000,
+        "hospitalisation_per_24h_eur": 50,
+        "hospitalisation_max_weeks": 52,
+        "repatriation_of_household_goods_eur": "2,000 (only if the External Journey exceeds six months and the Insured Person dies)",
+        "search_and_rescue_eur": 25000
+      },
+      "key_exclusions": [
+        "Medical expenses in the normal country of residence, except the specific limited return-home allowance",
+        "Travelling against medical advice, or for the purpose of obtaining treatment/convalescent care",
+        "Terminal prognosis cases",
+        "War within the Insured Person's own country of residence",
+        "War caused by Nuclear, Chemical or Biological cause",
+        "Expenses more than 24 months after the Accident/Illness",
+        "Repatriation or Search & Rescue expenses incurred without Healix International's prior approval",
+        "Dental/optical unless emergency",
+        "Suicide or intentional self-harm (except repatriation expenses following suicide)",
+        "Travel to areas the FCDO/WHO/local health authority advise against, unless declared and agreed by Underwriters"
+      ],
+      "source": "pages 21-22"
+    },
+    "2": {
+      "title": "Cancellation, Curtailment, Replacement and Change of Itinerary",
+      "sum_insured_eur_per_person": 15000,
+      "incident_limit_eur": 250000,
+      "covers": "Cancel/curtail/replace/rearrange an Insured Journey, or change a pre-booked itinerary, as a direct and necessary result of a cause outside the Assured's or Insured Person's control.",
+      "extensions": {
+        "travel_delay_inconvenience_benefit": "First 8-hour delay: €50, plus €50/completed hour after, max €500/claim on the outward journey at start of the Period of Travel; max €150/claim on subsequent outward journeys."
+      },
+      "key_exclusions": [
+        "Disinclination to travel",
+        "The Assured's financial circumstances",
+        "Financial failure/neglect of a transport or accommodation provider",
+        "Government/public authority regulations",
+        "Pre-existing strike/industrial action known before booking",
+        "Mechanical breakdown of under 2 hours' delay",
+        "Travelling against medical advice or for treatment purposes",
+        "No suitable Medical Practitioner evidence provided"
+      ],
+      "source": "page 23"
+    },
+    "3": {
+      "title": "Baggage, Delayed Baggage and Business Equipment",
+      "sum_insured_eur": 15000,
+      "single_item_limit_eur": 3000,
+      "business_equipment_max_eur": 3000,
+      "delayed_baggage_threshold_hours": 12,
+      "delayed_baggage_reimbursement_eur": 1000,
+      "automatic_reinstatement": "Sum insured is not reduced by a loss during the same Insured Journey; no extra premium for this.",
+      "key_exclusions": [
+        "More than €3,000 for any one item, pair or set",
+        "Household effects",
+        "Valuables (jewellery, precious metals/stones, furs, watches, binoculars, telescopes, photographic/audio/computer/telecoms/video equipment) lost in Carrier custody, outside the Insured Person's control",
+        "Money and Credit Cards (covered instead under Section 4)",
+        "Atmospheric/climatic damage, cleaning/dyeing/repairing damage, government confiscation/detention",
+        "Mechanical/electrical breakdown",
+        "Baggage shipped as freight / under a bill of lading",
+        "Valuables/Business Equipment loss not reported to police within 48 hours",
+        "Unattended property loss unless in a locked hotel room/safe/apartment/residence/venue showing forced entry, or a locked vehicle glove box/boot showing forced entry"
+      ],
+      "condition": "The Insured Person must exercise reasonable care in supervising the property at all times.",
+      "source": "page 24"
+    },
+    "4": {
+      "title": "Money, Travellers' Cheques, Passports, Travel Documents, Credit Cards and Rental Vehicle Excess",
+      "sum_insured_eur": 10000,
+      "cash_limit_eur": 3000,
+      "passport_replacement": "Up to 25% of the sum insured, including reasonable additional travel/accommodation cost to obtain a replacement.",
+      "business_documents_and_records": "Up to 25% of the sum insured, for Business documents/records belonging to or the responsibility of the Assured or Insured Person.",
+      "rental_vehicle_excess": {
+        "per_event_eur": 1000,
+        "aggregate_eur": 25000,
+        "covers": "The excess/deductible the Assured/Insured Person is legally liable to pay under the Rental Vehicle Agreement, where cover for that loss/theft/damage was in force.",
+        "exclusions": [
+          "Use outside the terms of the Rental Agreement",
+          "No optional Rental Vehicle insurance was taken out as part of the Rental Agreement",
+          "Damage not proven to have occurred during the Rental Agreement",
+          "Damage to tyres"
+        ]
+      },
+      "automatic_reinstatement": "Sum insured is not reduced by a loss during the same Insured Journey; no extra premium for this.",
+      "key_exclusions": [
+        "Losses over €3,000 in coin/bank/currency notes per person per event",
+        "Shortages from error, depreciation, or customs confiscation/detention",
+        "Credit card loss where card-issuer terms weren't complied with",
+        "Losses not reported to police within 48 hours",
+        "Money lost inside Baggage while in Carrier custody, outside the Insured Person's control"
+      ],
+      "condition": "The Insured Person must exercise reasonable care in supervising the money at all times.",
+      "source": "page 25"
+    },
+    "5": {
+      "title": "Personal Accident",
+      "benefits_eur": {
+        "1_accidental_death": 50000,
+        "2_loss_of_one_limb": 50000,
+        "3_loss_of_sight_one_eye": 50000,
+        "4_loss_of_two_limbs": 50000,
+        "5_loss_of_sight_both_eyes": 50000,
+        "6_loss_of_one_limb_and_sight_one_eye": 50000,
+        "7_permanent_total_disablement": 50000,
+        "8_temporary_total_disablement_per_week": 0,
+        "9_temporary_partial_disablement_per_week": 0,
+        "10_paraplegia": 50000,
+        "11_quadriplegia": 125000,
+        "12_triplegia": 85000,
+        "13_hemiplegia": 50000
+      },
+      "child_under_16_death_limit_eur": 20000,
+      "child_under_16_weekly_benefits": "Deleted",
+      "compassionate_travel_extension_capital_benefit_eur": 30000,
+      "special_extensions": {
+        "bereavement_counselling_eur": "250/week up to 5,000 per person",
+        "coma_benefit": "350 per full week, up to 104 weeks",
+        "counselling_eur": "250/week up to 5,000 per person",
+        "dependents_benefit": "+2% of death benefit per dependent child (up to 18, or 25 if in full-time education)",
+        "disability_assistance_eur": 25000,
+        "facial_disfigurement_eur": "1,250 for 1-5cm scarring; over 5cm paid per the compensation scale",
+        "fracture_benefit_eur": "Up to 1,000/500 per specific fracture type, max 5,000 total per Period of Insurance",
+        "funeral_expenses_eur": 10000,
+        "hospitalisation_benefit": "350/full week, up to 104 weeks",
+        "ptsd_terrorism": "50% of item 8 rate, max 300/week, max 16 weeks, only if item 8 is insured for that person",
+        "prosthesis_cover_eur": 10000,
+        "psychological_assistance_eur": 5000,
+        "relocation_expenses_eur": 25000,
+        "recruitment_costs_following_suicide_eur": 10000,
+        "retraining_expenses_eur": 15000,
+        "visiting_expenses_eur": 2500,
+        "visitors_corporate_event_benefit_eur": "25,000 per person for Visitors/Guests injured on Assured's premises or at a Corporate Event"
+      },
+      "key_exclusions": [
+        "Suicide, attempted suicide or intentional self-injury",
+        "Deliberate exposure to exceptional danger (except saving human life)",
+        "Own criminal act",
+        "Riding/driving in a race",
+        "Armed forces operational duties",
+        "Mountaineering/rock-climbing normally requiring ropes or guides",
+        "Aerial activities other than as a fare-paying passenger",
+        "Radioactive contamination",
+        "HIV/AIDS or related illness",
+        "Illness/disease, naturally occurring or degenerative conditions, and PTSD/psychological conditions not resulting from Bodily Injury"
+      ],
+      "source": "pages 26-29"
+    },
+    "6": {
+      "title": "Legal Expenses and Personal Liability",
+      "legal_expenses_eur": 50000,
+      "legal_expenses_notes": "Per claim, per Insured Person, for pursuing compensation for the Insured Person's death, Illness or Bodily Injury on a trip. Underwriters appoint the legal representative; a 90-day notification window applies as a condition precedent.",
+      "personal_liability_eur": 5000000,
+      "personal_liability_notes": "For legal liability for Bodily Injury to a third party, or damage to property not belonging to/controlled by the Insured Person or family/household/colleague/employee, caused by an Accident on the trip. 30-day notification condition applies.",
+      "key_exclusions": [
+        "Aircraft, horse-drawn/motorised vehicles, watercraft (other than rowing boats/punts/canoes), animals, firearms, explosives, weapons",
+        "Occupation or ownership of land/buildings",
+        "Trade, profession or Business activity",
+        "Racing of any kind",
+        "Deliberate, criminal, malicious or illegal acts",
+        "Liability already covered under other similar insurance",
+        "Legal proceedings outside constitutional/international/supranational courts other than the European Court of Justice and the Commission and Court of Human Rights"
+      ],
+      "source": "pages 30-31"
+    },
+    "7": {
+      "title": "Hijack, Kidnap and Detention",
+      "daily_benefit_eur": 500,
+      "daily_benefit_max_days": 50,
+      "consultants_costs_eur_per_person": 100000,
+      "consultants_costs_eur_period_max": 250000,
+      "covers": "Unlawful seizure of an Insured Person during an Insured Journey: daily benefit, travel/accommodation costs from the seizure, Constellis security-services costs, and PR/legal/medical adviser costs (with Underwriters' knowledge and agreement).",
+      "mandatory_provider_contact": "Constellis must be contacted for any claim to be paid. US: +1 713 918 6401. Rest of World: +44 (0)20 7240 3237.",
+      "key_exclusions": [
+        "Any fraudulent, dishonest or criminal act of the Assured or Insured Person",
+        "Constellis-related expenses incurred without Constellis's prior consent",
+        "Public relations/legal/medical adviser costs incurred without the Company's prior consent",
+        "See the general Kidnap exclusion list under Endorsements for excluded countries"
+      ],
+      "source": "page 32"
+    },
+    "8": {
+      "title": "Evacuation",
+      "sum_insured_eur": 50000,
+      "covers": "Evacuation Expenses when an Insured Person is forced to Evacuate during an External Journey, for a cause outside the Assured's/Insured Person's control.",
+      "trauma_risk_management_counselling_eur": 5000,
+      "mandatory_provider_contact": "Healix International must be informed immediately of anything that may give rise to a claim. Tel: +44 (0)20 8608 4052.",
+      "key_exclusions": [
+        "Violating local laws/regulations",
+        "Missing immigration/work/residence documentation",
+        "Redundancy",
+        "The Assured's financial circumstances",
+        "Evacuating nationals of the country involved, unless ordinarily domiciled elsewhere",
+        "Disinclination to continue the journey",
+        "Evacuation without Healix International's prior consent"
+      ],
+      "source": "page 33"
+    },
+    "9": {
+      "title": "Personal Security Specialist Expenses",
+      "sum_insured_eur_per_person": 10000,
+      "sum_insured_eur_period_max": 250000,
+      "covers": "Costs of engaging Healix International's security services to extricate an Insured Person from a Life-Threatening Situation.",
+      "life_threatening_situation_definition": "Any situation/event on an Insured Journey where Healix International agree the Insured Person's life is potentially in danger.",
+      "key_exclusions": [
+        "Situation directly due to circumstances within the Assured's/Insured Person's control",
+        "Fraudulent, dishonest or criminal acts",
+        "Circumstances more specifically covered under Section 7 (Hijack/Kidnap) or Section 8 (Evacuation)"
+      ],
+      "source": "page 34"
+    },
+    "10": {
+      "title": "Guests and Corporate Event Cover",
+      "capital_benefit_eur": 25000,
+      "covers": "Guests of the Assured sustaining Bodily Injury following an Accident while on a Corporate Event.",
+      "source": "page 35"
+    }
+  },
+  "general_exclusions_all_sections": [
+    "Suicide, attempted suicide or intentional self-injury",
+    "Deliberate exposure to exceptional danger, except saving human life",
+    "Own criminal act",
+    "Non-prescribed drugs not legally obtainable from a pharmacy/dispensary",
+    "Riding/driving in a race",
+    "Armed forces operational duties",
+    "Mountaineering/rock-climbing normally requiring ropes or guides",
+    "Aerial activities other than as a fare-paying passenger",
+    "Radioactive contamination",
+    "HIV/AIDS or related illness",
+    "Missing immigration/work/residence/visa documentation",
+    "Travel to areas the FCDO/WHO/local health authority advise against all travel",
+    "Any Bodily Injury or Illness arising directly or indirectly from a Cyber Act",
+    "War within the Insured Person's own country of residence",
+    "War occasioned by Nuclear, Chemical or Biological cause"
+  ],
+  "age_limit": "No cover attaches, except with Underwriters' specific prior agreement, for any Period of Travel undertaken by an Insured Person aged 81 or more at its commencement.",
+  "optional_activity_clauses_status": {
+    "holiday_inclusion_clause": "Not Included on this certificate (per the Schedule of Benefits page).",
+    "winter_sports_inclusion_clause": "Only available where the Holiday Inclusion Clause applies — currently Not Included, so Winter Sports are not automatically covered either.",
+    "scuba_diving_inclusion_clause": "Same basis as Winter Sports — tied to the Holiday Inclusion Clause, which is currently Not Included."
+  },
+  "claims_process": {
+    "notify_within": "As soon as practicable, max 6 months from the event, to Crawford TPA (or your broker for a death claim).",
+    "online_form": "https://us-fnol.claims.global/PulseInsurance",
+    "crawford_phone": "+32 2 714 03 60",
+    "crawford_email": "PulseClaims@Crawco.co.uk",
+    "crawford_address": "Crawford TPA, Blarenberglaan 3c, Mechelen, Vlaanderen 2800 Belgium",
+    "medical_emergency_helpline": "Healix International, 24/7 Tel +44 (0)208 608 4227, internationalhealthcare@healix.com",
+    "kidnap_response": "Constellis. US: +1 713 918 6401. Rest of World: +44 (0)20 7240 3237.",
+    "fraudulent_claims_clause": "A fraudulent claim voids Underwriters' liability for that claim, lets Underwriters recover sums already paid, and lets Underwriters terminate the contract from the time of the fraudulent act, without returning premium. This can apply per-covered-person without affecting cover for others."
+  },
+  "cancellation_and_refunds": {
+    "cooling_off_period_days": 14,
+    "cancel_by_assured": "In writing to the broker, any time.",
+    "cancel_by_underwriters_notice_days": 30,
+    "valid_reasons_for_underwriters_to_cancel": ["non-payment of premium", "a change in risk Underwriters can no longer cover", "non-cooperation or failure to supply requested information", "threatening or abusive behaviour/language"],
+    "refund_outside_cooling_off": "Pro-rata refund less a 20% cancellation fee of total incurred premium (minimum €50), provided no claim has been made or is intended.",
+    "refund_if_any_claim_paid": "None."
+  },
+  "law_and_jurisdiction": "Governed by the laws of England and Wales, exclusive jurisdiction of the courts of England and Wales, unless specifically agreed otherwise.",
+  "healix_travel_oracle_app": {
+    "note": "This is Healix's own app registration code, separate from Certificate No. CGT P804302600.",
+    "registration_code": "CNP201125",
+    "google_play": "https://play.google.com/store/apps/details?id=air.com.maxwelllucas.TravelOracle",
+    "apple_store": "https://apps.apple.com/gb/app/healix-travel-oracle/id783071105",
+    "portal": "https://traveloracle.healix.com/canopius"
+  },
+  "not_in_this_document": {
+    "note": "These topics are commonly asked about but are Arrow/CHI internal tracking conventions, NOT figures stated in the certificate wording itself. HAL should say so plainly rather than presenting them as policy fact.",
+    "items": [
+      "The '250 shared days' annual travel-day pool shown in the Travel Tracker",
+      "The 90-day 'Duration' flag threshold used in the Travel Tracker's trip warnings"
+    ]
+  }
+}
