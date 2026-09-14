@@ -1,0 +1,505 @@
+{
+  "certificate_no": "CGT P804302500 CN",
+  "policy_year": "2025-09-25 to 2026-08-31 (archived cutoff; certificate itself ran to 24/09/2026)",
+  "archived_on": "2026-09-14",
+  "annual_day_limit": 250,
+  "total_days_used": 247,
+  "employees": [
+    {
+      "name": "CHALARI XAGORARI SOFIA",
+      "email": "sof@arrowship.com",
+      "trips": [
+        {
+          "days": 10,
+          "dates": "29/09/2025 - 08/10/2025",
+          "route": "ATH-SIN-HKG-ATH"
+        }
+      ]
+    },
+    {
+      "name": "MEIDANI GARYFALIA (LITSA)",
+      "email": "lsm@arrowship.com",
+      "trips": [
+        {
+          "days": 10,
+          "dates": "29/09/2025 - 08/10/2025",
+          "route": "ATH-SIN-HKG-ATH"
+        }
+      ]
+    },
+    {
+      "name": "SAVVA KALLIRROI",
+      "email": "",
+      "trips": [
+        {
+          "days": 10,
+          "dates": "29/09/2025 - 08/10/2025",
+          "route": "ATH-SIN-HKG-ATH"
+        }
+      ]
+    },
+    {
+      "name": "KAVALEKAS STERGIOS",
+      "email": "",
+      "trips": [
+        {
+          "days": 7,
+          "dates": "29/09/2025 - 05/10/2025",
+          "route": "ATH-SIN-ATH"
+        },
+        {
+          "days": 7,
+          "dates": "07/03/2026 - 13/03/2026",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "name": "KOSTOGIANNIS ANARGYROS",
+      "email": "",
+      "trips": [
+        {
+          "days": 8,
+          "dates": "27/09/2025 - 04/10/2025",
+          "route": "ATH-SIN-ATH"
+        },
+        {
+          "days": 3,
+          "dates": "11/02/2026 - 13/02/2026",
+          "route": "ATH-AMS-STANSTED-ATH"
+        },
+        {
+          "days": 5,
+          "dates": "26/04/2026 - 30/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "KOSTOPOULOS KONSTANTINOS",
+      "email": "",
+      "trips": [
+        {
+          "days": 11,
+          "dates": "28/09/2025 - 08/10/2025",
+          "route": "ATH-SIN-GVA-ATH"
+        },
+        {
+          "days": 4,
+          "dates": "02/12/2025 - 05/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 5,
+          "dates": "26/04/2026 - 30/04/2026",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 5,
+          "dates": "03/03/2026 - 7/03/2026",
+          "route": "ATH-LHR-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "06/05/2026 - 07/05/2026",
+          "route": "ATH-HAM-ATH"
+        }
+      ]
+    },
+    {
+      "name": "IAN KOURTZAS",
+      "email": "",
+      "trips": [
+        {
+          "days": 13,
+          "dates": "27/09/2025 - 09/10/2025",
+          "route": "ATH-SIN-ATH"
+        }
+      ]
+    },
+    {
+      "name": "LEONIDES LEE-MICHALOPOULOS",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "04/11/2025 - 06/11/2025",
+          "route": "ATH-HAM-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "03/12/2025 - 04/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "28/04/2026 - 29/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "GIOVANNI RAMI",
+      "email": "",
+      "trips": [
+        {
+          "days": 2,
+          "dates": "05/11/2025 - 06/11/2025",
+          "route": "ATH-HAM-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "19/11/2025 - 20/11/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 4,
+          "dates": "04/12/2025 - 07/12/2025",
+          "route": "ATH-DOH-DXB-ATH"
+        },
+        {
+          "days": 6,
+          "dates": "25/01/2026 - 30/01/2026",
+          "route": "ATH-LONDON-ATH"
+        }
+      ]
+    },
+    {
+      "name": "PIERRE LOTH",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "05/11/2025 - 07/11/2025",
+          "route": "ATH-HAM-ATH"
+        },
+        {
+          "days": 3,
+          "dates": "02/12/2025 - 04/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 4,
+          "dates": "27/04/2026 - 30/04/2026",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "06/05/2026 - 07/05/2026",
+          "route": "ATH-HAM-ATH"
+        }
+      ]
+    },
+    {
+      "name": "MYRSINI ANDREOU",
+      "email": "",
+      "trips": [
+        {
+          "days": 6,
+          "dates": "08/11/2025 - 13/11/2025",
+          "route": "ATH-SIN-ATH"
+        },
+        {
+          "days": 3,
+          "dates": "02/12/2025 - 04/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "04/12/2025 - 05/12/2025",
+          "route": "GVA-LONDON-ATH"
+        },
+        {
+          "days": 3,
+          "dates": "27/04/2026 - 29/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "CONSTANTINE MARK HADJIPATERAS",
+      "email": "",
+      "trips": [
+        {
+          "days": 9,
+          "dates": "09/11/2025 - 17/11/2025",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        },
+        {
+          "days": 5,
+          "dates": "08/02/2026 - 12/02/2026",
+          "route": "ATH-LONDON-ATH"
+        },
+        {
+          "days": 3,
+          "dates": "07/03/2026 - 09/03/2026",
+          "route": "ATH-PVG-HND"
+        },
+        {
+          "days": 4,
+          "dates": "09/03/2026 - 12/03/2026",
+          "route": "PVG-HND-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "12/05/2026 - 13/05/2026",
+          "route": "ATH-LHR-ATH"
+        }
+      ]
+    },
+    {
+      "name": "ANGELIKI MARIA KASTANA",
+      "email": "",
+      "trips": [
+        {
+          "days": 10,
+          "dates": "28/11/2025 - 06/12/2025",
+          "route": "ATH-LONDON-ATH"
+        }
+      ]
+    },
+    {
+      "name": "VASILIKI ATHINA PETRAKI",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "03/12/2025 - 05/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 5,
+          "dates": "27/04/2026 - 01/05/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "PIERAS PASCHALIDES",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "03/12/2025 - 05/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "19/02/2026 - 20/02/2026",
+          "route": "ATH-LUG-ATH"
+        },
+        {
+          "days": 4,
+          "dates": "26/04/2026 - 29/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "NIKOS PAPADOPOULOS",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "03/12/2025 - 05/12/2025",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "KONSTANTINOS MOUMOURIS",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "02/12/2025 - 04/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "11/02/2026 - 12/02/2026",
+          "route": "ATH-AMS-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "30/06/2026 - 01/07/2026",
+          "route": "ATH-AMS-ATH"
+        }
+      ]
+    },
+    {
+      "name": "SOFIA EVGENIA FYRIOU",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "02/12/2025 - 04/12/2025",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "DIMITRIOS GKOUMAS",
+      "email": "",
+      "trips": [
+        {
+          "days": 5,
+          "dates": "01/12/2025 - 05/12/2025",
+          "route": "ATH-LONDON-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "28/04/2026 - 29/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "MARIA SEVDALI",
+      "email": "",
+      "trips": [
+        {
+          "days": 7,
+          "dates": "03/12/2025 - 09/12/2025",
+          "route": "ATH-LONDON-ATH"
+        }
+      ]
+    },
+    {
+      "name": "ALIKI TSAGKRONI",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "03/12/2025 - 05/12/2025",
+          "route": "ATH-LONDON-ATH"
+        }
+      ]
+    },
+    {
+      "name": "KONSTANTINOS EMMANOUILIDIS",
+      "email": "",
+      "trips": [
+        {
+          "days": 4,
+          "dates": "02/12/2025 - 05/12/2025",
+          "route": "ATH-LONDON-ATH"
+        }
+      ]
+    },
+    {
+      "name": "PANAGIOTIS DRILARIS",
+      "email": "",
+      "trips": [
+        {
+          "days": 5,
+          "dates": "02/12/2025 - 06/12/2025",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        },
+        {
+          "days": 8,
+          "dates": "07/03/2026 - 14/03/2026",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "name": "MAXIMILLIAN KATSAROS",
+      "email": "",
+      "trips": [
+        {
+          "days": 5,
+          "dates": "03/12/2025 - 07/12/2025",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 5,
+          "dates": "16/02/2026 - 20/02/2026",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 4,
+          "dates": "27/04/2026 - 30/04/2026",
+          "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 2,
+          "dates": "30/06/2026 - 01/07/2026",
+          "route": "ATH-AMS-ATH"
+        }
+      ]
+    },
+    {
+      "name": "ATHANASIOS ANAGNOSTOPOULOS",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "03/12/2025 - 05/12/2025",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "GEORGIOS FOTAKIS",
+      "email": "",
+      "trips": [
+        {
+          "days": 8,
+          "dates": "10/01/2026 - 17/01/2026",
+          "route": "ATH-SIN-ATH"
+        }
+      ]
+    },
+    {
+      "name": "DESPOINA CHATZIDAKI",
+      "email": "",
+      "trips": [
+        {
+          "days": 6,
+          "dates": "07/03/2026 - 12/03/2026",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "name": "ATHANASIA SEVDALI",
+      "email": "",
+      "trips": [
+        {
+          "days": 6,
+          "dates": "07/03/2026 - 12/03/2026",
+          "route": "ATH-DXB-ATH",
+          "canceled": true
+        }
+      ]
+    },
+    {
+      "name": "ODYSSEAS RENIERIS",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "27/04/2026 - 29/04/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "JANEK EKELI",
+      "email": "",
+      "trips": [
+        {
+          "days": 2,
+          "dates": "23/04/2026 - 24/04/2026",
+          "route": "ATH-CDG-ATH"
+        }
+      ]
+    }
+  ]
+}

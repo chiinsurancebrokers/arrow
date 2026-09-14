@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>Arrow Travel Insurance Portal</title>
     <style>
+        :root {
+            /* 2026/27 renewal palette -- deliberately different from the
+               2025/26 indigo build, so the two are visually distinguishable
+               at a glance if both are ever open side by side. */
+            --brand-primary: #0d9488;
+            --brand-primary-dark: #0f766e;
+        }
         * {
             margin: 0;
             padding: 0;
@@ -54,7 +61,7 @@
         .nav-logo svg {
             width: 1.5rem;
             height: 1.5rem;
-            color: #4f46e5;
+            color: var(--brand-primary);
         }
 
         .dropdown {
@@ -62,7 +69,7 @@
         }
 
         .dropdown-button {
-            background: #4f46e5;
+            background: var(--brand-primary);
             color: white;
             padding: 0.75rem 1.5rem;
             border: none;
@@ -77,7 +84,7 @@
         }
 
         .dropdown-button:hover {
-            background: #4338ca;
+            background: var(--brand-primary-dark);
         }
 
         .dropdown-button svg {
@@ -121,7 +128,7 @@
 
         .dropdown-item.active {
             background: #eef2ff;
-            color: #4f46e5;
+            color: var(--brand-primary);
             font-weight: 600;
         }
 
@@ -167,7 +174,7 @@
             left: 0;
             right: 0;
             height: 6px;
-            background: linear-gradient(90deg, #4f46e5, #10b981, #f59e0b);
+            background: linear-gradient(90deg, var(--brand-primary), #10b981, #f59e0b);
         }
 
         .policy-pill {
@@ -202,7 +209,7 @@
         .plane-icon {
             width: 2rem;
             height: 2rem;
-            color: #4f46e5;
+            color: var(--brand-primary);
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             flex-shrink: 0;
         }
@@ -243,7 +250,7 @@
             border-top: 4px solid;
         }
 
-        .stat-card-indigo { border-top-color: #4f46e5; }
+        .stat-card-indigo { border-top-color: var(--brand-primary); }
         .stat-card-green { border-top-color: #10b981; }
         .stat-card-purple { border-top-color: #a855f7; }
         .stat-card-orange { border-top-color: #f97316; }
@@ -273,7 +280,7 @@
             flex-shrink: 0;
         }
 
-        .stat-icon-indigo { color: #4f46e5; }
+        .stat-icon-indigo { color: var(--brand-primary); }
         .stat-icon-green { color: #10b981; }
         .stat-icon-purple { color: #a855f7; }
         .stat-icon-orange { color: #f97316; }
@@ -343,7 +350,7 @@
         .employee-days-value {
             font-size: 2rem;
             font-weight: bold;
-            color: #4f46e5;
+            color: var(--brand-primary);
         }
 
         .employee-days-label {
@@ -558,7 +565,7 @@
         }
 
         .trip-days-pending {
-            background: #4f46e5;
+            background: var(--brand-primary);
         }
 
         .trip-days-active {
@@ -606,7 +613,7 @@
             border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
-            border-left: 5px solid #4f46e5;
+            border-left: 5px solid var(--brand-primary);
         }
 
         .benefit-title {
@@ -622,7 +629,7 @@
         .benefit-amount {
             font-size: 1.5rem;
             font-weight: bold;
-            color: #4f46e5;
+            color: var(--brand-primary);
             margin-bottom: 0.5rem;
         }
 
@@ -815,7 +822,7 @@
 
         .footer-tagline {
             font-size: 0.85rem;
-            color: #4f46e5;
+            color: var(--brand-primary);
             font-weight: 500;
             margin-top: 0.75rem;
         }
@@ -1016,12 +1023,31 @@
     padding: 0.7rem 1rem;
     border: none;
     border-radius: 0.6rem;
-    background: #4f46e5;
+    background: var(--brand-primary);
     color: white;
     font-weight: 700;
     cursor: pointer;
 }
 
+
+        /* Season archive summary */
+        .archive-card {
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-left: 4px solid var(--brand-primary, #0d9488);
+            border-radius: 0.75rem;
+            padding: 0.9rem 1.1rem;
+            margin: 1rem 0;
+        }
+        .archive-card summary {
+            cursor: pointer;
+            font-weight: 700;
+            color: #1f2937;
+            font-size: 0.92rem;
+        }
+        .archive-card-body { margin-top: 0.75rem; font-size: 0.88rem; color: #374151; }
+        .archive-card-body ul { margin: 0.4rem 0 0.4rem 1.2rem; }
+        .archive-card-body code { background: #f3f4f6; padding: 0.1rem 0.35rem; border-radius: 0.25rem; font-size: 0.8rem; }
 
         /* HAL chat widget */
         #halFab {
@@ -1029,7 +1055,7 @@
             right: 1.5rem;
             bottom: 1.5rem;
             z-index: 1200;
-            background: #4f46e5;
+            background: var(--brand-primary);
             color: #fff;
             border: none;
             border-radius: 999px;
@@ -1042,7 +1068,32 @@
             align-items: center;
             gap: 0.5rem;
         }
-        #halFab:hover { background: #4338ca; }
+        #halFab:hover { background: var(--brand-primary-dark); }
+        .hal-tooltip {
+            position: fixed;
+            right: 1.5rem;
+            bottom: 5.2rem;
+            max-width: 240px;
+            background: #1f2937;
+            color: #fff;
+            font-size: 0.8rem;
+            line-height: 1.35;
+            padding: 0.65rem 1.8rem 0.65rem 0.85rem;
+            border-radius: 0.6rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+            z-index: 1199;
+        }
+        .hal-tooltip.hidden { display: none; }
+        .hal-tooltip-close {
+            position: absolute;
+            top: 0.3rem;
+            right: 0.4rem;
+            background: none;
+            border: none;
+            color: #d1d5db;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
         #halPanel {
             position: fixed;
             right: 1.5rem;
@@ -1059,7 +1110,7 @@
         }
         #halPanel.show { display: flex; }
         .hal-header {
-            background: #4f46e5;
+            background: var(--brand-primary);
             color: #fff;
             padding: 0.9rem 1rem;
             font-weight: 700;
@@ -1071,12 +1122,12 @@
         .hal-close { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
         .hal-messages { flex: 1; overflow-y: auto; padding: 0.9rem; display: flex; flex-direction: column; gap: 0.6rem; background: #f9fafb; }
         .hal-msg { max-width: 85%; padding: 0.6rem 0.8rem; border-radius: 0.7rem; font-size: 0.88rem; line-height: 1.4; white-space: pre-wrap; }
-        .hal-msg.user { align-self: flex-end; background: #4f46e5; color: #fff; border-bottom-right-radius: 0.2rem; }
+        .hal-msg.user { align-self: flex-end; background: var(--brand-primary); color: #fff; border-bottom-right-radius: 0.2rem; }
         .hal-msg.bot { align-self: flex-start; background: #fff; border: 1px solid #e5e7eb; border-bottom-left-radius: 0.2rem; }
         .hal-msg.bot .hal-cite { display: block; margin-top: 0.35rem; font-size: 0.72rem; color: #6b7280; }
         .hal-input-row { display: flex; gap: 0.5rem; padding: 0.75rem; border-top: 1px solid #e5e7eb; background: #fff; }
         .hal-input-row input { flex: 1; border: 1px solid #d1d5db; border-radius: 0.5rem; padding: 0.55rem 0.7rem; font-size: 0.88rem; }
-        .hal-input-row button { background: #4f46e5; color: #fff; border: none; border-radius: 0.5rem; padding: 0 1rem; font-weight: 600; cursor: pointer; }
+        .hal-input-row button { background: var(--brand-primary); color: #fff; border: none; border-radius: 0.5rem; padding: 0 1rem; font-weight: 600; cursor: pointer; }
         .hal-input-row button:disabled { opacity: 0.6; cursor: not-allowed; }
         .hal-disclaimer { font-size: 0.7rem; color: #9ca3af; padding: 0 0.9rem 0.6rem; }
     </style>
@@ -1238,7 +1289,19 @@
                 </div>
             </div>
 
-            
+            <details class="archive-card">
+                <summary>📦 2025/26 Season Archive (Certificate CGT P804302500 CN, closed 31/08/2026)</summary>
+                <div class="archive-card-body">
+                    <p>Full trip-by-trip record preserved for audit at <code>data/trips/archive_2025-09_2026-08.json</code>. Summary:</p>
+                    <ul>
+                        <li><strong>30</strong> employees on the policy</li>
+                        <li><strong>56</strong> completed trips, <strong>6</strong> canceled trips</li>
+                        <li><strong>247</strong> total days used (of the 250-day shared pool)</li>
+                    </ul>
+                    <p style="color:#6b7280;font-size:0.82rem;">The tracker below reset to zero on renewal (1 Sept 2026) — only trips dated on or after 01/09/2026 count against the new 250-day pool for Certificate CGT P804302600.</p>
+                </div>
+            </details>
+
             <div class="export-all-wrap">
                 <button class="export-all-btn" onclick="exportAllCSV()">⬇️ Export ALL Trips (CSV)</button>
             </div>
@@ -1679,6 +1742,21 @@
                     <li>Provides real-time visibility into travel utilization</li>
                 </ul>
 
+                <h3>🤖 Meet HAL</h3>
+                <p><strong>HAL</strong> is a chat assistant, available from the "Ask HAL" button, that explains
+                Arrow's travel certificate (CGT P804302600) in plain language — things like cover limits,
+                exclusions, and what to do in an emergency.</p>
+                <ul>
+                    <li>HAL only answers from the actual wording of this certificate — it doesn't guess,
+                    round, or use general insurance knowledge as if it were Arrow's terms.</li>
+                    <li>If something isn't in the certificate (like the 250-day tracking pool, which is an
+                    Arrow/CHI convention, not a policy figure), HAL says so directly rather than making
+                    something up.</li>
+                    <li>HAL doesn't handle claims. For an active claim or emergency, use the contacts under
+                    <strong>Emergency Contacts</strong> instead — Healix (medical), Constellis (kidnap/security),
+                    or Crawford TPA (claims).</li>
+                </ul>
+
                 <h3>System Features</h3>
                 <p><strong>Color-coded Progress Bars:</strong></p>
                 <ul>
@@ -1729,38 +1807,42 @@
     </div>
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Live data for the CURRENT policy year (Certificate CGT P804302600, 01/09/2026-31/08/2027).
+        // Reset on 2026-09-14 at renewal: trips before 01/09/2026 were moved out to
+        // data/trips/archive_2025-09_2026-08.json (30 employees, 247 non-canceled days used
+        // under the prior certificate CGT P804302500 CN). Only trips starting on/after
+        // 01/09/2026 remain here, so this year's counters start fresh.
         const employees = [
-            { name: "CHALARI XAGORARI SOFIA", email: "sof@arrowship.com", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
-            { name: "MEIDANI GARYFALIA (LITSA)", email: "lsm@arrowship.com", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
-            { name: "SAVVA KALLIRROI", email: "", trips: [{ days: 10, dates: "29/09/2025 - 08/10/2025", route: "ATH-SIN-HKG-ATH" }] },
-            { name: "KAVALEKAS STERGIOS", email: "", trips: [{ days: 7, dates: "29/09/2025 - 05/10/2025", route: "ATH-SIN-ATH" }, { days: 7, dates: "07/03/2026 - 13/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
-            { name: "KOSTOGIANNIS ANARGYROS", email: "", trips: [{ days: 8, dates: "27/09/2025 - 04/10/2025", route: "ATH-SIN-ATH" }, { days: 3, dates: "11/02/2026 - 13/02/2026", route: "ATH-AMS-STANSTED-ATH" }, {days: 5, dates: "26/04/2026 - 30/04/2026", route: "ATH-GVA-ATH"}] },
-            { name: "KOSTOPOULOS KONSTANTINOS", email: "", trips: [{ days: 11, dates: "28/09/2025 - 08/10/2025", route: "ATH-SIN-GVA-ATH" }, { days: 4, dates: "02/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 5, dates: "26/04/2026 - 30/04/2026", route: "ATH-GVA-ATH" }, {days: 5, dates: "03/03/2026 - 7/03/2026", route: "ATH-LHR-ATH" },{ days: 2, dates: "06/05/2026 - 07/05/2026", route: "ATH-HAM-ATH" }] },
-            { name: "IAN KOURTZAS", email: "", trips: [{ days: 13, dates: "27/09/2025 - 09/10/2025", route: "ATH-SIN-ATH" }] },
-            { name: "LEONIDES LEE-MICHALOPOULOS", email: "", trips: [{ days: 3, dates: "04/11/2025 - 06/11/2025", route: "ATH-HAM-ATH" }, { days: 2, dates: "03/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "28/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
-            { name: "GIOVANNI RAMI", email: "", trips: [{ days: 2, dates: "05/11/2025 - 06/11/2025", route: "ATH-HAM-ATH" }, { days: 2, dates: "19/11/2025 - 20/11/2025", route: "ATH-GVA-ATH" }, { days: 4, dates: "04/12/2025 - 07/12/2025", route: "ATH-DOH-DXB-ATH" }, { days: 6, dates: "25/01/2026 - 30/01/2026", route: "ATH-LONDON-ATH" } ] },
-            { name: "PIERRE LOTH", email: "", trips: [{ days: 3, dates: "05/11/2025 - 07/11/2025", route: "ATH-HAM-ATH" }, { days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, {  days: 4, dates: "27/04/2026 - 30/04/2026", route: "ATH-GVA-ATH"},{ days: 2, dates: "06/05/2026 - 07/05/2026", route: "ATH-HAM-ATH" }] },
-            { name: "MYRSINI ANDREOU", email: "", trips: [{ days: 6, dates: "08/11/2025 - 13/11/2025", route: "ATH-SIN-ATH" }, { days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "04/12/2025 - 05/12/2025", route: "GVA-LONDON-ATH" }, { days: 3, dates: "27/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }, { days: 3, dates: "16/09/2026 - 18/09/2026", route: "ATH-GVA-ATH" } ] },
-            { name: "CONSTANTINE MARK HADJIPATERAS", email: "", trips: [{ days: 9, dates: "09/11/2025 - 17/11/2025", route: "ATH-DXB-ATH", canceled: true }, { days: 5, dates: "08/02/2026 - 12/02/2026", route: "ATH-LONDON-ATH" }, { days: 3, dates: "07/03/2026 - 09/03/2026", route: "ATH-PVG-HND" }, { days: 4, dates: "09/03/2026 - 12/03/2026", route: "PVG-HND-ATH" },  {days: 2, dates: "12/05/2026 - 13/05/2026", route: "ATH-LHR-ATH" }] },
-            { name: "ANGELIKI MARIA KASTANA", email: "", trips: [{ days: 10, dates: "28/11/2025 - 06/12/2025", route: "ATH-LONDON-ATH" }] },
-            { name: "VASILIKI ATHINA PETRAKI", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 5, dates: "27/04/2026 - 01/05/2026", route: "ATH-GVA-ATH" }] },
-            { name: "PIERAS PASCHALIDES", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "19/02/2026 - 20/02/2026", route: "ATH-LUG-ATH" }, { days:4, dates: "26/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
-            { name: "NIKOS PAPADOPOULOS", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }] },
-            { name: "KONSTANTINOS MOUMOURIS", email: "", trips: [{ days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }, { days: 2, dates: "11/02/2026 - 12/02/2026", route: "ATH-AMS-ATH" }, { days: 2, dates: "30/06/2026 - 01/07/2026", route: "ATH-AMS-ATH"}] },
-            { name: "SOFIA EVGENIA FYRIOU", email: "", trips: [{ days: 3, dates: "02/12/2025 - 04/12/2025", route: "ATH-GVA-ATH" }] },
-            { name: "DIMITRIOS GKOUMAS", email: "", trips: [{ days: 5, dates: "01/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }, { days: 2, dates: "28/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
-            { name: "MARIA SEVDALI", email: "", trips: [{ days: 7, dates: "03/12/2025 - 09/12/2025", route: "ATH-LONDON-ATH" }] },
-            { name: "ALIKI TSAGKRONI", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }] },
-            { name: "KONSTANTINOS EMMANOUILIDIS", email: "", trips: [{ days: 4, dates: "02/12/2025 - 05/12/2025", route: "ATH-LONDON-ATH" }] },
-            { name: "PANAGIOTIS DRILARIS", email: "", trips: [{ days: 5, dates: "02/12/2025 - 06/12/2025", route: "ATH-DXB-ATH", canceled: true },{ days: 8, dates: "07/03/2026 - 14/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
-            { name: "MAXIMILLIAN KATSAROS", email: "", trips: [{ days: 5, dates: "03/12/2025 - 07/12/2025", route: "ATH-GVA-ATH" },{ days: 5, dates: "16/02/2026 - 20/02/2026", route: "ATH-GVA-ATH" },{ days: 4, dates: "27/04/2026 - 30/04/2026", route: "ATH-GVA-ATH" },{days: 2, dates: "30/06/2026 - 01/07/2026", route: "ATH-AMS-ATH"}] },
-            { name: "ATHANASIOS ANAGNOSTOPOULOS", email: "", trips: [{ days: 3, dates: "03/12/2025 - 05/12/2025", route: "ATH-GVA-ATH" }] },
-            { name: "GEORGIOS FOTAKIS", email: "", trips: [{ days: 8, dates: "10/01/2026 - 17/01/2026", route: "ATH-SIN-ATH" }] },
-            { name: "DESPOINA CHATZIDAKI", email: "", trips: [{ days: 6, dates: "07/03/2026 - 12/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
-            { name: "ATHANASIA SEVDALI", email: "", trips: [{ days: 6, dates: "07/03/2026 - 12/03/2026", route: "ATH-DXB-ATH", canceled: true }] },
-            { name: "ODYSSEAS RENIERIS", email: "", trips: [{ days: 3, dates: "27/04/2026 - 29/04/2026", route: "ATH-GVA-ATH" }] },
-            { name: "JANEK EKELI", email: "", trips: [{ days: 2, dates: "23/04/2026 - 24/04/2026", route: "ATH-CDG-ATH" }] },
-         
+            { name: "CHALARI XAGORARI SOFIA", email: "sof@arrowship.com", trips: [] },
+            { name: "MEIDANI GARYFALIA (LITSA)", email: "lsm@arrowship.com", trips: [] },
+            { name: "SAVVA KALLIRROI", email: "", trips: [] },
+            { name: "KAVALEKAS STERGIOS", email: "", trips: [] },
+            { name: "KOSTOGIANNIS ANARGYROS", email: "", trips: [] },
+            { name: "KOSTOPOULOS KONSTANTINOS", email: "", trips: [] },
+            { name: "IAN KOURTZAS", email: "", trips: [] },
+            { name: "LEONIDES LEE-MICHALOPOULOS", email: "", trips: [] },
+            { name: "GIOVANNI RAMI", email: "", trips: [] },
+            { name: "PIERRE LOTH", email: "", trips: [] },
+            { name: "MYRSINI ANDREOU", email: "", trips: [{"days": 3, "dates": "16/09/2026 - 18/09/2026", "route": "ATH-GVA-ATH"}] },
+            { name: "CONSTANTINE MARK HADJIPATERAS", email: "", trips: [] },
+            { name: "ANGELIKI MARIA KASTANA", email: "", trips: [] },
+            { name: "VASILIKI ATHINA PETRAKI", email: "", trips: [] },
+            { name: "PIERAS PASCHALIDES", email: "", trips: [] },
+            { name: "NIKOS PAPADOPOULOS", email: "", trips: [] },
+            { name: "KONSTANTINOS MOUMOURIS", email: "", trips: [] },
+            { name: "SOFIA EVGENIA FYRIOU", email: "", trips: [] },
+            { name: "DIMITRIOS GKOUMAS", email: "", trips: [] },
+            { name: "MARIA SEVDALI", email: "", trips: [] },
+            { name: "ALIKI TSAGKRONI", email: "", trips: [] },
+            { name: "KONSTANTINOS EMMANOUILIDIS", email: "", trips: [] },
+            { name: "PANAGIOTIS DRILARIS", email: "", trips: [] },
+            { name: "MAXIMILLIAN KATSAROS", email: "", trips: [] },
+            { name: "ATHANASIOS ANAGNOSTOPOULOS", email: "", trips: [] },
+            { name: "GEORGIOS FOTAKIS", email: "", trips: [] },
+            { name: "DESPOINA CHATZIDAKI", email: "", trips: [] },
+            { name: "ATHANASIA SEVDALI", email: "", trips: [] },
+            { name: "ODYSSEAS RENIERIS", email: "", trips: [] },
+            { name: "JANEK EKELI", email: "", trips: [] },
         ];
 
         const MAX_DAYS = 250;
@@ -2323,6 +2405,10 @@ function downloadTextFile(text, filename, mime) {
     </script>
 
     <!-- HAL: policy explainer chat, grounded only in Certificate CGT P804302600 -->
+    <div id="halTooltip" class="hal-tooltip hidden">
+        <button class="hal-tooltip-close" onclick="dismissHalTooltip()" aria-label="Dismiss">✕</button>
+        New: ask HAL about your cover — e.g. "am I covered for scuba diving?"
+    </div>
     <button id="halFab" onclick="openHalChat()">🤖 Ask HAL</button>
     <div id="halPanel" role="dialog" aria-modal="true" aria-labelledby="halPanelTitle">
         <div class="hal-header">
@@ -2352,12 +2438,23 @@ function downloadTextFile(text, filename, mime) {
         function openHalChat() {
             document.getElementById('halPanel').classList.add('show');
             document.getElementById('halInput').focus();
+            dismissHalTooltip();
         }
         function closeHalChat() {
             document.getElementById('halPanel').classList.remove('show');
         }
+        function dismissHalTooltip() {
+            localStorage.setItem('halTooltipSeen_v1', '1');
+            const el = document.getElementById('halTooltip');
+            if (el) el.classList.add('hidden');
+        }
+        if (localStorage.getItem('halTooltipSeen_v1') !== '1') {
+            const tip = document.getElementById('halTooltip');
+            if (tip) tip.classList.remove('hidden');
+        }
         window.openHalChat = openHalChat;
         window.closeHalChat = closeHalChat;
+        window.dismissHalTooltip = dismissHalTooltip;
 
         function appendHalMessage(role, text, citations) {
             const wrap = document.getElementById('halMessages');

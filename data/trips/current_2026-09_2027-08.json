@@ -1,0 +1,164 @@
+{
+  "certificate_no": "CGT P804302600",
+  "policy_year": "2026-09-01 to 2027-08-31",
+  "annual_day_limit": 250,
+  "note": "Live tracker data for the current policy year. Reset from the CGT P804302500 CN archive on 2026-09-14; trips dated before 01/09/2026 were moved to data/trips/archive_2025-09_2026-08.json.",
+  "employees": [
+    {
+      "name": "CHALARI XAGORARI SOFIA",
+      "email": "sof@arrowship.com",
+      "trips": []
+    },
+    {
+      "name": "MEIDANI GARYFALIA (LITSA)",
+      "email": "lsm@arrowship.com",
+      "trips": []
+    },
+    {
+      "name": "SAVVA KALLIRROI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "KAVALEKAS STERGIOS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "KOSTOGIANNIS ANARGYROS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "KOSTOPOULOS KONSTANTINOS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "IAN KOURTZAS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "LEONIDES LEE-MICHALOPOULOS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "GIOVANNI RAMI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "PIERRE LOTH",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "MYRSINI ANDREOU",
+      "email": "",
+      "trips": [
+        {
+          "days": 3,
+          "dates": "16/09/2026 - 18/09/2026",
+          "route": "ATH-GVA-ATH"
+        }
+      ]
+    },
+    {
+      "name": "CONSTANTINE MARK HADJIPATERAS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "ANGELIKI MARIA KASTANA",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "VASILIKI ATHINA PETRAKI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "PIERAS PASCHALIDES",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "NIKOS PAPADOPOULOS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "KONSTANTINOS MOUMOURIS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "SOFIA EVGENIA FYRIOU",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "DIMITRIOS GKOUMAS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "MARIA SEVDALI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "ALIKI TSAGKRONI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "KONSTANTINOS EMMANOUILIDIS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "PANAGIOTIS DRILARIS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "MAXIMILLIAN KATSAROS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "ATHANASIOS ANAGNOSTOPOULOS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "GEORGIOS FOTAKIS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "DESPOINA CHATZIDAKI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "ATHANASIA SEVDALI",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "ODYSSEAS RENIERIS",
+      "email": "",
+      "trips": []
+    },
+    {
+      "name": "JANEK EKELI",
+      "email": "",
+      "trips": []
+    }
+  ]
+}

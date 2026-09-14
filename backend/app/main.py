@@ -9,7 +9,9 @@ from fastapi.staticfiles import StaticFiles
 from backend.app.api.chat import router as chat_router
 from backend.app.knowledge.policy_facts import certificate_summary
 
-FRONTEND_DIR = Path(__file__).resolve().parents[2] / "frontend"
+ROOT_DIR = Path(__file__).resolve().parents[2]
+FRONTEND_DIR = ROOT_DIR / "frontend"
+DATA_DIR = ROOT_DIR / "data"
 
 app = FastAPI(title="Arrow Travel Portal API", version="1.0.0")
 
@@ -30,5 +32,10 @@ def health() -> dict:
     return {"status": "ok", "certificate": certificate_summary()["certificate_no"]}
 
 
-# Serve the portal itself last, so /api/* and /health are matched first.
+# data/policy/*.json (HAL's facts) and data/trips/*.json (season archive +
+# current-year trip data) are readable at /data/... -- useful for the
+# archive-card link in the frontend, or for a future admin tool.
+app.mount("/data", StaticFiles(directory=DATA_DIR), name="data")
+
+# Serve the portal itself last, so /api/*, /health and /data/* are matched first.
 app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")
