@@ -17,7 +17,10 @@ logger = logging.getLogger("hal.chat")
 
 class ChatTurn(BaseModel):
     role: str = Field(..., pattern="^(user|assistant)$")
-    content: str = Field(..., min_length=1, max_length=1500)
+    # Browser history can contain a long previous HAL answer. Accept enough text
+    # for validation, then adviser._normalise_history applies the stricter
+    # 1,500-char/item and 6,000-char-total token-saving caps before any AI call.
+    content: str = Field(..., min_length=1, max_length=6000)
 
 
 class ChatRequest(BaseModel):
@@ -111,8 +114,6 @@ def _looks_policy_related(message: str, history: list[ChatTurn]) -> bool:
 
 
 def _client_ip(request: Request) -> str:
-    # Railway/proxy usually provides X-Forwarded-For. Only the first hop is used,
-    # and it is a secondary abuse guard; browser-session limits remain primary.
     forwarded = request.headers.get("x-forwarded-for", "").split(",", 1)[0].strip()
     if forwarded:
         return forwarded[:100]

@@ -1809,7 +1809,7 @@
         </div>
     </div>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Live data for the CURRENT policy year (Certificate CGT P804302600, 01/09/2026-31/08/2027).
         // Reset on 2026-09-14 at renewal: trips before 01/09/2026 were moved out to
         // data/trips/archive_2025-09_2026-08.json (30 employees, 247 non-canceled days used
@@ -2493,7 +2493,20 @@ function downloadTextFile(text, filename, mime) {
                 });
                 if (!res.ok) {
                     let detail = '';
-                    try { detail = (await res.json()).detail || ''; } catch (_) { /* body wasn't JSON */ }
+                    try {
+                        const payload = await res.json();
+                        const raw = payload && payload.detail;
+                        if (typeof raw === 'string') {
+                            detail = raw;
+                        } else if (Array.isArray(raw)) {
+                            detail = raw.map(item => {
+                                const loc = Array.isArray(item.loc) ? item.loc.join('.') : '';
+                                return (loc ? loc + ': ' : '') + (item.msg || JSON.stringify(item));
+                            }).join('; ');
+                        } else if (raw) {
+                            detail = JSON.stringify(raw);
+                        }
+                    } catch (_) { /* body wasn't JSON */ }
                     throw new Error('HAL request failed (' + res.status + ')' + (detail ? ': ' + detail : ''));
                 }
                 const data = await res.json();
