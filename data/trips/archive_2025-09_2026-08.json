@@ -3,7 +3,7 @@
   "policy_year": "2025-09-25 to 2026-08-31 (archived cutoff; certificate itself ran to 24/09/2026)",
   "archived_on": "2026-09-14",
   "annual_day_limit": 250,
-  "total_days_used": 247,
+  "total_days_used": 250,
   "employees": [
     {
       "name": "CHALARI XAGORARI SOFIA",
@@ -188,6 +188,15 @@
           "days": 2,
           "dates": "06/05/2026 - 07/05/2026",
           "route": "ATH-HAM-ATH"
+        },
+        {
+          "days": 4,
+          "pool_charge_days": 0,
+          "dates": "01/09/2026 - 04/09/2026",
+          "route": "ATH-GVA-ATH",
+          "policy_allocation": "prior",
+          "goodwill_exception": true,
+          "approval_note": "Pulse goodwill extension approved by Oliver Slaney to assist renewal; no additional charge to the exhausted 250-day pool."
         }
       ]
     },
@@ -214,6 +223,15 @@
           "days": 3,
           "dates": "27/04/2026 - 29/04/2026",
           "route": "ATH-GVA-ATH"
+        },
+        {
+          "days": 3,
+          "pool_charge_days": 3,
+          "dates": "16/09/2026 - 18/09/2026",
+          "route": "ATH-GVA-ATH",
+          "policy_allocation": "prior",
+          "final_pool_trip": true,
+          "allocation_note": "Final 3-day deduction from the previous 250-day administrative pool; pool exhausted to 250/250."
         }
       ]
     },
@@ -501,5 +519,6 @@
         }
       ]
     }
-  ]
+  ],
+  "allocation_note": "Final prior-pool accounting: Myrsini Andreou 16-18 Sep 2026 charged the last 3 days to reach 250/250. Pierre Loth 1-4 Sep 2026 was approved separately by Pulse as goodwill with zero additional pool charge."
 }

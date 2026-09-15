@@ -54,6 +54,9 @@ class TripInput(BaseModel):
     end_date: str = Field(..., min_length=10, max_length=10)
     route: str = Field(..., min_length=3, max_length=200)
     notes: str = Field(default="", max_length=1000)
+    pool_charge_days: int | None = Field(default=None, ge=0, le=365)
+    goodwill_exception: bool = False
+    approval_note: str = Field(default="", max_length=1200)
 
 
 class CancelInput(BaseModel):
@@ -76,12 +79,8 @@ def dashboard(x_admin_key: str | None = Header(default=None)) -> dict:
         },
     }
 
-    # Arrow sees current tracker read-only. CHI also sees it because CHI is the
-    # write/control role for current trips.
     if role in {"arrow", "chi"}:
         result["tracker"] = tracker_summary()
-
-    # Previous policy history remains Arrow-admin information.
     if role == "arrow":
         result["archive"] = archive_summary()
 

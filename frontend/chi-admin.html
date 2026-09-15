@@ -17,21 +17,16 @@
   </div>
 
   <div class="grid">
-    <section class="card">
-      <h2>Claims &amp; emergency contacts</h2>
-      <div id="claims"></div>
-    </section>
+    <section class="card"><h2>Claims &amp; emergency contacts</h2><div id="claims"></div></section>
     <section class="card" id="chiOnly" hidden>
-      <h2>HAL provider health</h2>
-      <div id="provider"></div>
-      <h2 style="margin-top:18px">Policy administration</h2>
-      <div id="policyAdmin" class="mono"></div>
+      <h2>HAL provider health</h2><div id="provider"></div>
+      <h2 style="margin-top:18px">Policy administration</h2><div id="policyAdmin" class="mono"></div>
     </section>
   </div>
 
   <section class="card" id="tripFormCard" style="margin-top:16px">
     <h2>Current policy trip administration — 2026/27</h2>
-    <p class="trip-admin-help">This is the write/control panel. Arrow Administrator remains read-only. A new policy year begins at <strong>0 travelling employees / 0 days / 250 remaining</strong>; add only the trips you want counted for Certificate CGT P804302600.</p>
+    <p class="trip-admin-help">This is the write/control panel. The renewal pool began at 0/250, and the confirmed 2026/27 trips are preloaded. For ordinary trips, leave <strong>Pool charge days</strong> blank and the full trip duration is charged automatically. Use an override only for a documented administrative exception.</p>
     <div id="trackerStats" class="metrics trip-admin-summary"></div>
     <div id="trackerNotice" class="notice"></div>
     <div id="tripStorage" class="trip-admin-help"></div>
@@ -39,30 +34,15 @@
     <h3 style="margin-top:18px">Add or edit a trip</h3>
     <datalist id="employeeRoster"></datalist>
     <div class="trip-admin-form">
-      <div class="trip-field">
-        <label for="tripEmployee">Employee</label>
-        <input id="tripEmployee" list="employeeRoster" placeholder="Start typing employee name">
-      </div>
-      <div class="trip-field">
-        <label for="tripEmail">Email (optional)</label>
-        <input id="tripEmail" type="email" placeholder="employee@example.com">
-      </div>
-      <div class="trip-field">
-        <label for="tripStart">Start date</label>
-        <input id="tripStart" type="date" min="2026-09-01" max="2027-08-31">
-      </div>
-      <div class="trip-field">
-        <label for="tripEnd">End date</label>
-        <input id="tripEnd" type="date" min="2026-09-01">
-      </div>
-      <div class="trip-field full">
-        <label for="tripRoute">Route</label>
-        <input id="tripRoute" placeholder="ATH-GVA-ATH">
-      </div>
-      <div class="trip-field full">
-        <label for="tripNotes">Notes (optional)</label>
-        <textarea id="tripNotes" placeholder="Booking/reference or internal note"></textarea>
-      </div>
+      <div class="trip-field"><label for="tripEmployee">Employee</label><input id="tripEmployee" list="employeeRoster" placeholder="Start typing employee name"></div>
+      <div class="trip-field"><label for="tripEmail">Email (optional)</label><input id="tripEmail" type="email" placeholder="employee@example.com"></div>
+      <div class="trip-field"><label for="tripStart">Start date</label><input id="tripStart" type="date" min="2026-09-01" max="2027-08-31"></div>
+      <div class="trip-field"><label for="tripEnd">End date</label><input id="tripEnd" type="date" min="2026-09-01"></div>
+      <div class="trip-field full"><label for="tripRoute">Route</label><input id="tripRoute" placeholder="ATH-GVA-ATH"></div>
+      <div class="trip-field"><label for="tripPoolCharge">Pool charge days (optional override)</label><input id="tripPoolCharge" type="number" min="0" step="1" placeholder="Blank = full trip days"></div>
+      <div class="trip-field checkbox-field"><label><input id="tripGoodwill" type="checkbox"> Goodwill / approved exception</label></div>
+      <div class="trip-field full"><label for="tripApprovalNote">Approval / allocation note (optional)</label><textarea id="tripApprovalNote" placeholder="e.g. Pulse approval, date and reason for exception"></textarea></div>
+      <div class="trip-field full"><label for="tripNotes">Other notes (optional)</label><textarea id="tripNotes" placeholder="Booking/reference or internal note"></textarea></div>
       <div id="tripDaysPreview" class="trip-days-preview">Dates calculate days automatically</div>
       <div id="tripPolicyPreview" class="trip-policy-preview"></div>
       <div class="trip-form-actions">
@@ -74,7 +54,7 @@
 
     <h3 style="margin-top:22px">Current trips</h3>
     <div class="scroll"><table>
-      <thead><tr><th>Employee</th><th>Dates</th><th>Route</th><th>Days</th><th>Status</th><th>Actions</th></tr></thead>
+      <thead><tr><th>Employee</th><th>Dates</th><th>Route</th><th>Travel days</th><th>Pool charge</th><th>Status</th><th>Actions</th></tr></thead>
       <tbody id="tripRows"></tbody>
     </table></div>
   </section>
