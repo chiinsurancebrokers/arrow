@@ -1,30 +1,29 @@
-"""Regression test for HAL's core promise: it must never invent a figure
-that isn't in the policy-facts JSON, and it must clearly decline questions
-about things the certificate doesn't cover (e.g. individual claim outcomes,
-or Arrow's internal 250-day tracking convention).
+"""Regression tests for HAL v3 grounding and role separation."""
 
-This test mocks the Anthropic client so it runs without a live API key --
-it checks the *prompt construction*, not model output quality. A slower,
-real-API smoke test can be added separately once ANTHROPIC_API_KEY is
-available in CI.
-"""
-
-from backend.app.services.adviser import _build_system_prompt
+from backend.app.services.adviser import build_system_prompt
 
 
 def test_system_prompt_embeds_full_policy_facts():
-    prompt = _build_system_prompt()
+    prompt = build_system_prompt()
     assert "CGT P804302600" in prompt
-    assert '"sum_insured_eur_per_person": 15000' in prompt  # Section 2 renewal figure
+    assert '"sum_insured_eur_per_person": 15000' in prompt
     assert "not_in_this_document" in prompt
 
 
-def test_system_prompt_forbids_inventing_facts():
-    prompt = _build_system_prompt()
-    assert "may only state facts" in prompt
-    assert "I can't confirm that from the certificate wording" in prompt
+def test_system_prompt_forbids_inventing_and_claim_adjudication():
+    prompt = build_system_prompt()
+    assert "Never invent" in prompt
+    assert "CLAIM DECISION" in prompt
+    assert "may never approve, reject, guarantee or predict an individual claim" in prompt
 
 
-def test_system_prompt_refuses_claim_adjudication():
-    prompt = _build_system_prompt()
-    assert "not a claims handler" in prompt
+def test_employee_prompt_labels_tracker_as_non_policy():
+    prompt = build_system_prompt()
+    assert "250-day shared pool" in prompt
+    assert "not policy wording" in prompt
+
+
+def test_admin_tracker_context_is_explicitly_labelled_administrative():
+    prompt = build_system_prompt(tracker_context='{"annual_day_limit":250}')
+    assert "ADMIN CONTEXT (not policy wording)" in prompt
+    assert '"annual_day_limit":250' in prompt
