@@ -2,7 +2,7 @@
   "certificate_no": "CGT P804302600",
   "policy_year": "2026-09-01 to 2027-08-31",
   "annual_day_limit": 250,
-  "note": "Live tracker data for the current policy year. Reset from the CGT P804302500 CN archive on 2026-09-14; trips dated before 01/09/2026 were moved to data/trips/archive_2025-09_2026-08.json.",
+  "note": "Baseline for the 2026/27 policy year. Starts at zero trips. Live changes are stored in the runtime trip database, not in this seed file.",
   "employees": [
     {
       "name": "CHALARI XAGORARI SOFIA",
@@ -57,13 +57,7 @@
     {
       "name": "MYRSINI ANDREOU",
       "email": "",
-      "trips": [
-        {
-          "days": 3,
-          "dates": "16/09/2026 - 18/09/2026",
-          "route": "ATH-GVA-ATH"
-        }
-      ]
+      "trips": []
     },
     {
       "name": "CONSTANTINE MARK HADJIPATERAS",

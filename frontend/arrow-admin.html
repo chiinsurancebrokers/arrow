@@ -1,6 +1,63 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Arrow Administrator</title><link rel="stylesheet" href="/admin.css"></head>
-<body data-admin-role="arrow"><header class="top"><h1>Arrow Administrator</h1><p>Internal travel administration & policy assistant</p></header><main class="wrap"><div id="error" class="error"></div><div class="card" style="margin-bottom:16px"><b id="cert">Loading certificate…</b> <button class="btn secondary" style="float:right" onclick="resetAdminKey()">Change access key</button></div>
-<div class="grid"><section class="card" data-arrow-only><h2>Travel tracker</h2><div id="trackerStats" class="metrics"></div><div id="trackerNotice" class="notice"></div></section><section class="card"><h2>Claims & emergency contacts</h2><div id="claims"></div></section></div>
-<section class="card" data-arrow-only style="margin-top:16px"><h2>Employees & trips</h2><div class="scroll"><table><thead><tr><th>Employee</th><th>Days</th><th>Trips</th><th>Trip details</th></tr></thead><tbody id="employees"></tbody></table></div></section>
-<section class="card" style="margin-top:16px"><h2>Administrator HAL</h2><p style="font-size:.82rem;color:#64748b">This authenticated HAL may answer questions about the Arrow tracker as administrative data, as well as policy wording and claims procedure.</p><div id="adminMessages" class="chat"></div><div class="row"><textarea id="adminInput" placeholder="Ask about a trip, day pool, policy cover, claim procedure or contact…"></textarea><button class="btn" onclick="adminChat()">Ask HAL</button></div></section>
-<section id="chiOnly" class="card" style="margin-top:16px" hidden><h2>HAL provider health (CHI only)</h2><div id="provider"></div><h2 style="margin-top:18px">Policy administration</h2><div id="policyAdmin" class="mono"></div></section></main><script src="/admin-app.js"></script></body></html>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Arrow Administrator</title>
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body data-admin-role="arrow">
+<header class="top"><h1>Arrow Administrator</h1><p>Internal travel administration &amp; policy assistant</p></header>
+<main class="wrap">
+  <div id="error" class="error"></div>
+  <div class="card" style="margin-bottom:16px">
+    <b id="cert">Loading certificate…</b>
+    <button class="btn secondary" style="float:right" onclick="resetAdminKey()">Change access key</button>
+  </div>
+
+  <div class="grid">
+    <section class="card" data-arrow-only>
+      <h2>Current policy tracker — 2026/27</h2>
+      <div id="trackerStats" class="metrics"></div>
+      <div id="trackerNotice" class="notice"></div>
+    </section>
+    <section class="card">
+      <h2>Claims &amp; emergency contacts</h2>
+      <div id="claims"></div>
+    </section>
+  </div>
+
+  <section class="card" data-arrow-only style="margin-top:16px">
+    <h2>Current-policy employees &amp; trips</h2>
+    <div class="scroll"><table>
+      <thead><tr><th>Employee</th><th>Days</th><th>Trips</th><th>Trip details</th></tr></thead>
+      <tbody id="employees"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" data-arrow-only style="margin-top:16px">
+    <h2>2025/26 policy archive</h2>
+    <p style="font-size:.82rem;color:#64748b">Historical Arrow administrative data. It does not count against the current 2026/27 250-day pool.</p>
+    <div id="archiveStats" class="metrics"></div>
+    <div id="archiveNotice" class="notice"></div>
+    <div class="scroll" style="margin-top:12px"><table>
+      <thead><tr><th>Employee</th><th>Days</th><th>Counted trips</th><th>Cancelled</th><th>Trip details</th></tr></thead>
+      <tbody id="archiveEmployees"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Administrator HAL</h2>
+    <p style="font-size:.82rem;color:#64748b">This authenticated HAL may answer questions about the current Arrow tracker as administrative data, as well as policy wording and claims procedure. Previous-policy history remains visible in the archive above.</p>
+    <div id="adminMessages" class="chat"></div>
+    <div class="row"><textarea id="adminInput" placeholder="Ask about a trip, day pool, policy cover, claim procedure or contact…"></textarea><button class="btn" onclick="adminChat()">Ask HAL</button></div>
+  </section>
+
+  <section id="chiOnly" class="card" style="margin-top:16px" hidden>
+    <h2>HAL provider health (CHI only)</h2><div id="provider"></div>
+    <h2 style="margin-top:18px">Policy administration</h2><div id="policyAdmin" class="mono"></div>
+  </section>
+</main>
+<script src="/admin-app.js"></script>
+</body>
+</html>

@@ -1,6 +1,91 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CHI Insurance Administrator</title><link rel="stylesheet" href="/admin.css"></head>
-<body data-admin-role="chi"><header class="top"><h1>CHI Insurance Administrator</h1><p>Broker administration, HAL health, policy & claims oversight</p></header><main class="wrap"><div id="error" class="error"></div><div class="card" style="margin-bottom:16px"><b id="cert">Loading certificate…</b> <button class="btn secondary" style="float:right" onclick="resetAdminKey()">Change access key</button></div>
-<div class="grid"><section class="card" data-arrow-only><h2>Travel tracker</h2><div id="trackerStats" class="metrics"></div><div id="trackerNotice" class="notice"></div></section><section class="card"><h2>Claims & emergency contacts</h2><div id="claims"></div></section></div>
-<section class="card" data-arrow-only style="margin-top:16px"><h2>Employees & trips</h2><div class="scroll"><table><thead><tr><th>Employee</th><th>Days</th><th>Trips</th><th>Trip details</th></tr></thead><tbody id="employees"></tbody></table></div></section>
-<section class="card" style="margin-top:16px"><h2>Administrator HAL</h2><p style="font-size:.82rem;color:#64748b">CHI Administrator HAL covers policy wording, claims procedure and HAL/provider administration. Arrow tracker intelligence is intentionally not exposed in the CHI administrator role.</p><div id="adminMessages" class="chat"></div><div class="row"><textarea id="adminInput" placeholder="Ask about policy cover, wording, claim procedure or contacts…"></textarea><button class="btn" onclick="adminChat()">Ask HAL</button></div></section>
-<section id="chiOnly" class="card" style="margin-top:16px" hidden><h2>HAL provider health (CHI only)</h2><div id="provider"></div><h2 style="margin-top:18px">Policy administration</h2><div id="policyAdmin" class="mono"></div></section></main><script src="/admin-app.js"></script></body></html>
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CHI Insurance Administrator</title>
+  <link rel="stylesheet" href="/admin.css">
+  <link rel="stylesheet" href="/trip-admin.css">
+</head>
+<body data-admin-role="chi">
+<header class="top"><h1>CHI Insurance Administrator</h1><p>Broker administration, trip entry, HAL health, policy &amp; claims oversight</p></header>
+<main class="wrap">
+  <div id="error" class="error"></div>
+  <div class="card" style="margin-bottom:16px">
+    <b id="cert">Loading certificate…</b>
+    <button class="btn secondary" style="float:right" onclick="resetAdminKey()">Change access key</button>
+  </div>
+
+  <div class="grid">
+    <section class="card">
+      <h2>Claims &amp; emergency contacts</h2>
+      <div id="claims"></div>
+    </section>
+    <section class="card" id="chiOnly" hidden>
+      <h2>HAL provider health</h2>
+      <div id="provider"></div>
+      <h2 style="margin-top:18px">Policy administration</h2>
+      <div id="policyAdmin" class="mono"></div>
+    </section>
+  </div>
+
+  <section class="card" id="tripFormCard" style="margin-top:16px">
+    <h2>Current policy trip administration — 2026/27</h2>
+    <p class="trip-admin-help">This is the write/control panel. Arrow Administrator remains read-only. A new policy year begins at <strong>0 travelling employees / 0 days / 250 remaining</strong>; add only the trips you want counted for Certificate CGT P804302600.</p>
+    <div id="trackerStats" class="metrics trip-admin-summary"></div>
+    <div id="trackerNotice" class="notice"></div>
+    <div id="tripStorage" class="trip-admin-help"></div>
+
+    <h3 style="margin-top:18px">Add or edit a trip</h3>
+    <datalist id="employeeRoster"></datalist>
+    <div class="trip-admin-form">
+      <div class="trip-field">
+        <label for="tripEmployee">Employee</label>
+        <input id="tripEmployee" list="employeeRoster" placeholder="Start typing employee name">
+      </div>
+      <div class="trip-field">
+        <label for="tripEmail">Email (optional)</label>
+        <input id="tripEmail" type="email" placeholder="employee@example.com">
+      </div>
+      <div class="trip-field">
+        <label for="tripStart">Start date</label>
+        <input id="tripStart" type="date" min="2026-09-01" max="2027-08-31">
+      </div>
+      <div class="trip-field">
+        <label for="tripEnd">End date</label>
+        <input id="tripEnd" type="date" min="2026-09-01">
+      </div>
+      <div class="trip-field full">
+        <label for="tripRoute">Route</label>
+        <input id="tripRoute" placeholder="ATH-GVA-ATH">
+      </div>
+      <div class="trip-field full">
+        <label for="tripNotes">Notes (optional)</label>
+        <textarea id="tripNotes" placeholder="Booking/reference or internal note"></textarea>
+      </div>
+      <div id="tripDaysPreview" class="trip-days-preview">Dates calculate days automatically</div>
+      <div id="tripPolicyPreview" class="trip-policy-preview"></div>
+      <div class="trip-form-actions">
+        <button id="tripSaveBtn" class="btn" type="button" onclick="saveTrip()">Add trip</button>
+        <button id="tripEditCancel" class="btn secondary" type="button" onclick="cancelTripEdit()" hidden>Cancel edit</button>
+        <span id="tripMessage" class="trip-message"></span>
+      </div>
+    </div>
+
+    <h3 style="margin-top:22px">Current trips</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>Employee</th><th>Dates</th><th>Route</th><th>Days</th><th>Status</th><th>Actions</th></tr></thead>
+      <tbody id="tripRows"></tbody>
+    </table></div>
+  </section>
+
+  <section class="card" style="margin-top:16px">
+    <h2>Administrator HAL</h2>
+    <p style="font-size:.82rem;color:#64748b">CHI Administrator HAL covers policy wording, claims procedure and HAL/provider administration. Trip editing is performed through the dedicated controls above rather than through free-text AI instructions.</p>
+    <div id="adminMessages" class="chat"></div>
+    <div class="row"><textarea id="adminInput" placeholder="Ask about policy cover, wording, claim procedure or contacts…"></textarea><button class="btn" onclick="adminChat()">Ask HAL</button></div>
+  </section>
+</main>
+<script src="/admin-app.js"></script>
+</body>
+</html>
